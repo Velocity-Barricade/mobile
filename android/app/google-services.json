@@ -1,0 +1,40 @@
+{
+  "project_info": {
+    "project_number": "236505550841",
+    "firebase_url": "https://barricade-3f11d.firebaseio.com",
+    "project_id": "barricade-3f11d",
+    "storage_bucket": "barricade-3f11d.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:236505550841:android:568528a8a20c3dca2f3728",
+        "android_client_info": {
+          "package_name": "dsc.barricade"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "236505550841-uf458kbhk06o887l62oiit2ddimq06s4.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyB96YyUWdx-3JnZJFEmSyQG6PqxxxjhthE"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "236505550841-uf458kbhk06o887l62oiit2ddimq06s4.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

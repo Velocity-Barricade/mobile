@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 
+import 'Screens/HomeScreen/HomeScreen.dart';
 import 'Screens/Login/LoginScreen.dart';
 import 'Screens/QR/qr_helper.dart';
 import 'Screens/TimeTable/TimeTableScreen.dart';
@@ -33,7 +34,7 @@ class _MyAppState extends State<MyApp> {
       title: "Bank App Neomorphism",
       debugShowCheckedModeBanner: false,
       home: Scaffold(
-        body: TimeTableScreen(),
+        body: HomeScreen(),
       ),
     );
   }

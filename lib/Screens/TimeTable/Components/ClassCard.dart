@@ -4,7 +4,8 @@ import 'package:flutter/material.dart';
 
 class ClassCard extends StatefulWidget {
   int Number;
-  ClassCard({this.Number});
+  bool upcoming;
+  ClassCard({this.Number,this.upcoming=false});
   @override
   _ClassCardState createState() => _ClassCardState();
 }
@@ -13,7 +14,7 @@ class _ClassCardState extends State<ClassCard> {
   @override
   Widget build(BuildContext context) {
     return Padding(
-      padding: const EdgeInsets.only(bottom:13.0),
+      padding: const EdgeInsets.only(bottom:0.0),
       child: Card(
         elevation: 10,
         shape: RoundedRectangleBorder(borderRadius: BorderRadius.all(Radius.circular(17))),

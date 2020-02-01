@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 
 import 'Screens/Login/LoginScreen.dart';
 import 'Screens/QR/qr_helper.dart';
+import 'Screens/TimeTable/TimeTableScreen.dart';
 import 'Temp/card.dart';
 import 'package:camera/camera.dart';
 
@@ -29,12 +30,10 @@ class _MyAppState extends State<MyApp> {
   Widget build(BuildContext context) {
 
     return MaterialApp(
-
-
       title: "Bank App Neomorphism",
       debugShowCheckedModeBanner: false,
       home: Scaffold(
-        body: LoginScreen(),
+        body: TimeTableScreen(),
       ),
     );
   }

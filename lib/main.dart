@@ -1,8 +1,8 @@
 import 'package:flutter/material.dart';
 
+import 'Screens/Login/LoginScreen.dart';
 import 'Screens/QR/qr_helper.dart';
 import 'Temp/card.dart';
-import 'Temp/login_dart.dart';
 import 'package:camera/camera.dart';
 
 
@@ -10,13 +10,15 @@ List<CameraDescription> cameraList;
 
 Future main()
 async {
-  cameraList = await availableCameras();
-  runApp(MyApp(cameralist: cameraList,));
+//  cameraList = await availableCameras();
+//  runApp(MyApp(cameralist: cameraList,));
+    runApp(MyApp());
 }
 class MyApp extends StatefulWidget {
-  var cameralist;
-  MyApp({this.cameralist}){
-  }
+//  var cameralist;
+//  MyApp({this.cameralist}){
+//  }
+
 
   @override
   _MyAppState createState() => _MyAppState();
@@ -32,7 +34,7 @@ class _MyAppState extends State<MyApp> {
       title: "Bank App Neomorphism",
       debugShowCheckedModeBanner: false,
       home: Scaffold(
-        body: QRTest(cameras: widget.cameralist,),
+        body: LoginScreen(),
       ),
     );
   }

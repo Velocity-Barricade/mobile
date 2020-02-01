@@ -1,6 +1,7 @@
+import 'package:barricade/Screens/Login/LoginServices.dart';
 import 'package:flutter/material.dart';
 
-import 'Screens/Login/LoginScreen.dart';
+import 'Screens./Registration/register.dart';
 import 'Screens/QR/qr_helper.dart';
 import 'Temp/card.dart';
 import 'package:camera/camera.dart';
@@ -34,7 +35,11 @@ class _MyAppState extends State<MyApp> {
       title: "Bank App Neomorphism",
       debugShowCheckedModeBanner: false,
       home: Scaffold(
-        body: LoginScreen(),
+        floatingActionButton: FloatingActionButton(onPressed: () async {
+          print("usama");
+          print(await signIn("k180154hjjhkhkhk@nu.edu.pk" , "123412341234"));
+        }),
+        body: Registeration(),
       ),
     );
   }

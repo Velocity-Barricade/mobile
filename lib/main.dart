@@ -1,9 +1,9 @@
 import 'package:flutter/material.dart';
 
-import 'Screens/HomeScreen/HomeScreen.dart';
-import 'Screens/Login/LoginScreen.dart';
+import 'Screens/HomeScreen/home_screen.dart';
+import 'Screens/Login/login_screen.dart';
 import 'Screens/QR/qr_helper.dart';
-import 'Screens/TimeTable/TimeTableScreen.dart';
+import 'Screens/TimeTable/timetable_screen.dart';
 import 'Temp/card.dart';
 import 'package:camera/camera.dart';
 

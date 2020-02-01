@@ -1,4 +1,4 @@
-import 'package:barricade/Screens/TimeTable/Components/ClassCard.dart';
+import 'package:barricade/Screens/TimeTable/Components/class_card.dart';
 import 'package:barricade/Values/colors.dart';
 import 'package:flutter/material.dart';
 
@@ -50,7 +50,7 @@ class _HomeScreenState extends State<HomeScreen> {
                               color: Colors.white,
                               child: Align(
                                   alignment: Alignment.centerLeft,
-                                  child: new Text("HI,Saad",style: TextStyle(color: themeColor,fontSize: 41,fontWeight: FontWeight.w400),)),
+                                  child: new Text("Hi,Saad",style: TextStyle(color: themeColor,fontSize: 41,fontWeight: FontWeight.w400),)),
 
                   ),
                           ),
@@ -77,7 +77,7 @@ class _HomeScreenState extends State<HomeScreen> {
                                         alignment: Alignment.centerLeft,
                                         child: Padding(
                                           padding:  EdgeInsets.only(bottom:17.0),
-                                          child: new Text("Upcoming",style: TextStyle(fontSize: 20),),
+                                          child: new Text("Upcoming",style: TextStyle(fontSize: 20,),),
                                         )),
                                     ClassCard(Number: 2,upcoming: true,),
 
@@ -88,7 +88,7 @@ class _HomeScreenState extends State<HomeScreen> {
                                         child: Row(
                                           mainAxisSize: MainAxisSize.min,
                                           children: <Widget>[
-                                            Text("View your timetable "),
+                                            Text("View your timetable ",style: TextStyle(color: themeGrey,fontSize: 15),),
                                             Icon(Icons.arrow_forward)
                                           ],
                                         ),

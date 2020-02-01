@@ -10,11 +10,11 @@ class _FreindCardState extends State<FreindCard> {
   Widget build(BuildContext context) {
     return Card(
       color: themeColor,
-      elevation: 5,
+      elevation: 2,
       shape: RoundedRectangleBorder(borderRadius: BorderRadius.all(Radius.circular(16))),
       child: Container(
 //        height: 134,
-        width: 140,
+        width: 120,
         child: Column(
           children: <Widget>[
             

@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 
-import 'ClassCard.dart';
+import 'class_card.dart';
 
 class DayList extends StatefulWidget {
   @override

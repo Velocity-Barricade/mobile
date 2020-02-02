@@ -1,6 +1,7 @@
 import 'package:barricade/Screens/Login/LoginServices.dart';
 import 'package:flutter/material.dart';
 import 'Screens./Registration/register.dart';
+import 'Screens./Login/login_screen.dart';
 import 'package:camera/camera.dart';
 
 
@@ -28,10 +29,16 @@ class _MyAppState extends State<MyApp> {
   Widget build(BuildContext context) {
 
     return MaterialApp(
+
       title: "Bank App Neomorphism",
       debugShowCheckedModeBanner: false,
       home: Scaffold(
-        body: Registeration(),
+        floatingActionButton: FloatingActionButton (onPressed: () async {
+          print("usama");
+          await authFunc.signIn("k180194@nu.edu.pk", "qwerty") ;
+          print(await authFunc.isVarified());
+        },) ,
+        body: LoginScreen(),
       ),
     );
   }

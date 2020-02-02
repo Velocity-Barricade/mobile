@@ -1,11 +1,6 @@
+import 'package:barricade/Screens/Login/LoginServices.dart';
 import 'package:flutter/material.dart';
-
-import 'Screens/FriendTimeTable/friend_timetable_screen.dart';
-import 'Screens/HomeScreen/home_screen.dart';
-import 'Screens/Login/login_screen.dart';
-import 'Screens/QR/qr_helper.dart';
-import 'Screens/TimeTable/timetable_screen.dart';
-import 'Temp/card.dart';
+import 'Screens./Registration/register.dart';
 import 'package:camera/camera.dart';
 
 
@@ -28,6 +23,7 @@ class MyApp extends StatefulWidget {
 }
 
 class _MyAppState extends State<MyApp> {
+  AuthUser authFunc =  new AuthUser();
   @override
   Widget build(BuildContext context) {
 
@@ -35,7 +31,7 @@ class _MyAppState extends State<MyApp> {
       title: "Bank App Neomorphism",
       debugShowCheckedModeBanner: false,
       home: Scaffold(
-        body: FreindTimeTable(),
+        body: Registeration(),
       ),
     );
   }

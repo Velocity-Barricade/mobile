@@ -17,31 +17,34 @@ class _LoginScreenState extends State<LoginScreen> {
         children: <Widget>[
           Container(
             decoration: BoxDecoration(
-              image: new DecorationImage(image: new AssetImage("assets/fast.jfif"), fit: BoxFit.cover,),
-
+              image: new DecorationImage(
+                image: new AssetImage("assets/fast.jfif"),
+                fit: BoxFit.cover,
+              ),
             ),
           ),
           Stack(
             alignment: Alignment.center,
             children: <Widget>[
-
               LoginForm(),
               Positioned(
 //
-              top: 0,
+                  top: 0,
 //                  alignment: Alignment.topCenter,
                   child: Hi()),
               Positioned(
                 bottom: 25,
-                child:  new Text("Forgot your password?",style: TextStyle(color: Colors.white,decoration: TextDecoration.underline),),
+                child: new Text(
+                  "Forgot your password?",
+                  style: TextStyle(
+                      color: Colors.white,
+                      decoration: TextDecoration.underline),
+                ),
               )
-
             ],
           ),
-
         ],
       ),
     );
   }
 }
-

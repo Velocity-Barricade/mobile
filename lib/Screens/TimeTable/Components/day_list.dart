@@ -9,10 +9,11 @@ class DayList extends StatefulWidget {
 
 class _DayListState extends State<DayList> {
   var list=[1,2,3,4,5,6,7,8,9];
+  var padding=0.0;
   @override
   Widget build(BuildContext context) {
     return ListView.builder(
-      padding: EdgeInsets.only(left: 18,right: 18,top: 48),
+      padding: EdgeInsets.only(left: padding,right: padding,top: 48),
 
       itemCount: list.length,
       itemBuilder: (BuildContext context,int index){

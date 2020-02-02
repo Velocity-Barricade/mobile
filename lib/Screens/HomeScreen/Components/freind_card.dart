@@ -30,7 +30,7 @@ class _FreindCardState extends State<FreindCard> {
                         children: <Widget>[
                           Padding(
                             padding: const EdgeInsets.all(4.0),
-                            child: new Text("Shakeeb Siddiqui",
+                            child: new Text("Hassan Berry",
                                 overflow: TextOverflow.ellipsis,
                                 style: new TextStyle(color: Colors.white,fontSize: 16,fontWeight: FontWeight.w500)),
                           ),

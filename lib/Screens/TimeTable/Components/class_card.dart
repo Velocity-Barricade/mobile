@@ -22,6 +22,7 @@ class _ClassCardState extends State<ClassCard> {
         child: Padding(
           padding: const EdgeInsets.all(8.0),
           child: ListTile(
+
             leading: Padding(
               padding:  EdgeInsets.only(left:20.0),
               child: new Column(

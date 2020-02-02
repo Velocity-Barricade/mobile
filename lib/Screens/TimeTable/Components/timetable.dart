@@ -14,41 +14,40 @@ class TimeTable extends StatefulWidget {
 class _TimeTableState extends State<TimeTable> {
   @override
   Widget build(BuildContext context) {
-    var leftPadding=18.0;
+    var leftPadding=0.0;
     return DefaultTabController(
       length: 5,
 
       child: Scaffold(
         backgroundColor: Colors.white,
+
         appBar: new PreferredSize(
           preferredSize: Size.fromHeight(46),
           child: new Container(
             color: Colors.white,
-            child: new SafeArea(
-              child: Padding(
-                padding:  EdgeInsets.only(left:leftPadding,right: leftPadding),
-                child: Column(
-                  children: <Widget>[
-                    new Expanded(child: new Container()),
-                    new TabBar(
-                      //isScrollable: true,
+            child: Padding(
+              padding:  EdgeInsets.only(left:leftPadding,right: leftPadding),
+              child: Column(
+                children: <Widget>[
+                  new Expanded(child: new Container()),
+                  new TabBar(
+                    //isScrollable: true,
 
-                      indicator: CustomTabIndicator(),
-                      unselectedLabelColor: themeGrey,
-                      tabs: [Padding(
-                        padding: const EdgeInsets.all(4.0),
-                        child: new Text("Mon"),
-                      )
-                        , new Text("Tue")
-                        , new Text("Wed")
-                        , new Text("Thu")
-                        , new Text("Fri")
+                    indicator: CustomTabIndicator(),
+                    unselectedLabelColor: themeGrey,
+                    tabs: [Padding(
+                      padding: const EdgeInsets.all(4.0),
+                      child: new Text("Mon"),
+                    )
+                      , new Text("Tue")
+                      , new Text("Wed")
+                      , new Text("Thu")
+                      , new Text("Fri")
 
 
-                      ],
-                    ),
-                  ],
-                ),
+                    ],
+                  ),
+                ],
               ),
             ),
           ),

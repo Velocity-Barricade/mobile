@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:barricade/Screens/Login/LoginServices.dart';
 
 class Registeration extends StatefulWidget {
   @override
@@ -6,6 +7,9 @@ class Registeration extends StatefulWidget {
 }
 
 class _RegisterationState extends State<Registeration> {
+  AuthUser authUser = new AuthUser();
+  TextEditingController email = new TextEditingController();
+  TextEditingController pass = new TextEditingController();
   @override
   Widget build(BuildContext context) {
     MediaQueryData queryData;
@@ -68,6 +72,7 @@ class _RegisterationState extends State<Registeration> {
                     ),
                     child: Center(
                       child: TextField(
+                        controller: email,
                         decoration: InputDecoration(
                             labelStyle: new TextStyle(color: Colors.blue),
                             border: new UnderlineInputBorder(
@@ -110,6 +115,7 @@ class _RegisterationState extends State<Registeration> {
                     ),
                     child: Center(
                       child: TextField(
+                        controller: pass,
                         decoration: InputDecoration(
                             labelStyle: new TextStyle(color: Colors.blue),
                             border: new UnderlineInputBorder(
@@ -127,7 +133,41 @@ class _RegisterationState extends State<Registeration> {
                   width: queryData.size.width * 0.580,
                   child: RaisedButton(
                     color: Colors.blueGrey,
-                    onPressed: () {},
+                    onPressed: () async {
+                      RegExp regExp = new RegExp(
+                        r"^[a-zA-Z0-9.!#$%&'*+/=?^_`{|}~-]+@[a-zA-Z0-9](?:[a-zA-Z0-9-]{0,253}[a-zA-Z0-9])?(?:\.[a-zA-Z0-9](?:[a-zA-Z0-9-]{0,253}[a-zA-Z0-9])?)*$",
+                        caseSensitive: false,
+                        multiLine: false,
+                      );
+                      if (regExp.hasMatch(email.text)) {
+                        print(await authUser.signUp(email.text, pass.text));
+                        authUser.sendVerification();
+                        showDialog(
+                          context: context,
+                          builder: (BuildContext context) {
+                            // return object of type Dialog
+                            return AlertDialog(
+                              title: new Text("Email Varification"),
+                              content: new Text(
+                                  "Click link in email for Varification"),
+                              actions: <Widget>[
+                                // usually buttons at the bottom of the dialog
+                                new FlatButton(
+                                  child: new Text("Ok"),
+                                  onPressed: () {
+                                    Navigator.of(context).pop();
+                                  },
+                                ),
+                              ],
+                            );
+                          },
+                        );
+                      } else {
+                        final snackBar =
+                            SnackBar(content: Text('Not Valid Email'));
+                        Scaffold.of(context).showSnackBar(snackBar);
+                      }
+                    },
                     child: new Text(
                       "Sign up",
                       style: TextStyle(color: Colors.white, fontSize: 20),
@@ -143,4 +183,8 @@ class _RegisterationState extends State<Registeration> {
       ),
     );
   }
+}
+
+void _showDialog(BuildContext context) {
+  // flutter defined function
 }

@@ -1,6 +1,11 @@
 import 'package:barricade/Screens/Login/LoginServices.dart';
 import 'package:flutter/material.dart';
-import 'Screens./Registration/register.dart';
+
+import 'Screens/HomeScreen/home_screen.dart';
+import 'Screens/Login/login_screen.dart';
+import 'Screens/QR/qr_helper.dart';
+import 'Screens/TimeTable/timetable_screen.dart';
+import 'Temp/card.dart';
 import 'package:camera/camera.dart';
 
 
@@ -28,16 +33,10 @@ class _MyAppState extends State<MyApp> {
   Widget build(BuildContext context) {
 
     return MaterialApp(
-
-
       title: "Bank App Neomorphism",
       debugShowCheckedModeBanner: false,
       home: Scaffold(
-        floatingActionButton: FloatingActionButton(onPressed: () async {
-          print("usama");
-          print(await authFunc.isVarified());
-        }),
-        body: Registeration(),
+        body: HomeScreen(),
       ),
     );
   }

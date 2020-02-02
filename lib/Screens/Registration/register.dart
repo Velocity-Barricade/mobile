@@ -1,5 +1,7 @@
+import 'package:barricade/Screens/Registration/registerValidators.dart';
 import 'package:flutter/material.dart';
 import 'package:barricade/Screens/Login/LoginServices.dart';
+import 'package:barricade/Values/colors.dart';
 
 class Registeration extends StatefulWidget {
   @override
@@ -8,8 +10,11 @@ class Registeration extends StatefulWidget {
 
 class _RegisterationState extends State<Registeration> {
   AuthUser authUser = new AuthUser();
-  TextEditingController email = new TextEditingController();
-  TextEditingController pass = new TextEditingController();
+  var email;
+  var pass;
+  var name;
+  final GlobalKey<FormState> formKey = new GlobalKey<FormState>();
+  bool validate = false;
   @override
   Widget build(BuildContext context) {
     MediaQueryData queryData;
@@ -33,8 +38,8 @@ class _RegisterationState extends State<Registeration> {
                         child: Container(
                           child: Text("Welcome Stranger",
                               textAlign: TextAlign.left,
-                              style: TextStyle(
-                                  fontSize: 33.0, color: Colors.blueGrey)),
+                              style:
+                                  TextStyle(fontSize: 33.0, color: themeColor)),
                         ),
                       ),
                       Align(
@@ -61,120 +66,146 @@ class _RegisterationState extends State<Registeration> {
                   ),
                 ),
               ),
-              Padding(
-                padding: const EdgeInsets.only(top: 36.0, left: 10),
-                child: Container(
-                  width: queryData.size.width * 0.84,
-                  child: Theme(
-                    data: new ThemeData(
-                      primaryColor: Colors.yellow,
-                      accentColor: Colors.blue,
-                    ),
-                    child: Center(
-                      child: TextField(
-                        controller: email,
-                        decoration: InputDecoration(
-                            labelStyle: new TextStyle(color: Colors.blue),
-                            border: new UnderlineInputBorder(
-                                borderSide: new BorderSide(color: Colors.red)),
-                            hintText: 'Email ID'),
+              Form(
+                autovalidate: validate,
+                key: formKey,
+                child: Column(
+                  children: <Widget>[
+                    Padding(
+                      padding: const EdgeInsets.only(top: 36.0, left: 10),
+                      child: Container(
+                        width: queryData.size.width * 0.84,
+                        child: Theme(
+                          data: new ThemeData(
+                            primaryColor: themeColor,
+                            accentColor: Colors.blue,
+                          ),
+                          child: Center(
+                            child: TextFormField(
+                              validator: (val) => validatorEmail(val),
+                              keyboardType: TextInputType.emailAddress,
+                              onSaved: (val) {
+                                email = val;
+                              },
+                              decoration: InputDecoration(
+                                  labelStyle: new TextStyle(color: Colors.blue),
+                                  border: new UnderlineInputBorder(
+                                      borderSide:
+                                          new BorderSide(color: Colors.red)),
+                                  hintText: 'Email ID'),
+                            ),
+                          ),
+                        ),
                       ),
                     ),
-                  ),
-                ),
-              ),
-              Padding(
-                padding: const EdgeInsets.only(top: 30.0, left: 10),
-                child: Container(
-                  width: queryData.size.width * 0.84,
-                  child: Theme(
-                    data: new ThemeData(
-                      primaryColor: Colors.yellow,
-                      accentColor: Colors.blue,
-                    ),
-                    child: Center(
-                      child: TextField(
-                        decoration: InputDecoration(
-                            labelStyle: new TextStyle(color: Colors.blue),
-                            border: new UnderlineInputBorder(
-                                borderSide: new BorderSide(color: Colors.red)),
-                            hintText: 'Full Name'),
+                    Padding(
+                      padding: const EdgeInsets.only(top: 30.0, left: 10),
+                      child: Container(
+                        width: queryData.size.width * 0.84,
+                        child: Theme(
+                          data: new ThemeData(
+                            primaryColor: Colors.yellow,
+                            accentColor: Colors.blue,
+                          ),
+                          child: Center(
+                            child: TextFormField(
+                              onSaved: (val) {
+                                name = val;
+                              },
+                              keyboardType: TextInputType.text,
+                              validator: (val) => validatorName(val),
+                              decoration: InputDecoration(
+                                  labelStyle: new TextStyle(color: Colors.blue),
+                                  border: new UnderlineInputBorder(
+                                      borderSide:
+                                          new BorderSide(color: Colors.red)),
+                                  hintText: 'Full Name'),
+                            ),
+                          ),
+                        ),
                       ),
                     ),
-                  ),
-                ),
-              ),
-              Padding(
-                padding: const EdgeInsets.only(top: 30.0, left: 10),
-                child: Container(
-                  width: queryData.size.width * 0.84,
-                  child: Theme(
-                    data: new ThemeData(
-                      primaryColor: Colors.yellow,
-                      accentColor: Colors.blue,
-                    ),
-                    child: Center(
-                      child: TextField(
-                        controller: pass,
-                        decoration: InputDecoration(
-                            labelStyle: new TextStyle(color: Colors.blue),
-                            border: new UnderlineInputBorder(
-                                borderSide: new BorderSide(color: Colors.red)),
-                            hintText: 'Password'),
+                    Padding(
+                      padding: const EdgeInsets.only(top: 30.0, left: 10),
+                      child: Container(
+                        width: queryData.size.width * 0.84,
+                        child: Theme(
+                          data: new ThemeData(
+                            primaryColor: Colors.yellow,
+                            accentColor: Colors.blue,
+                          ),
+                          child: Center(
+                            child: TextFormField(
+                              onSaved: (val) {
+                                pass = val;
+                              },
+                              validator: (val) => validatorPass(val),
+                              keyboardType: TextInputType.visiblePassword,
+                              decoration: InputDecoration(
+                                  labelStyle: new TextStyle(color: Colors.blue),
+                                  border: new UnderlineInputBorder(
+                                      borderSide:
+                                          new BorderSide(color: Colors.red)),
+                                  hintText: 'Password'),
+                            ),
+                          ),
+                        ),
                       ),
                     ),
-                  ),
-                ),
-              ),
-              Padding(
-                padding: const EdgeInsets.only(top: 110),
-                child: Container(
-                  height: queryData.size.height * 0.06,
-                  width: queryData.size.width * 0.580,
-                  child: RaisedButton(
-                    color: Colors.blueGrey,
-                    onPressed: () async {
-                      RegExp regExp = new RegExp(
-                        r"^[a-zA-Z0-9.!#$%&'*+/=?^_`{|}~-]+@[a-zA-Z0-9](?:[a-zA-Z0-9-]{0,253}[a-zA-Z0-9])?(?:\.[a-zA-Z0-9](?:[a-zA-Z0-9-]{0,253}[a-zA-Z0-9])?)*$",
-                        caseSensitive: false,
-                        multiLine: false,
-                      );
-                      if (regExp.hasMatch(email.text)) {
-                        print(await authUser.signUp(email.text, pass.text));
-                        authUser.sendVerification();
-                        showDialog(
-                          context: context,
-                          builder: (BuildContext context) {
-                            // return object of type Dialog
-                            return AlertDialog(
-                              title: new Text("Email Varification"),
-                              content: new Text(
-                                  "Click link in email for Varification"),
-                              actions: <Widget>[
-                                // usually buttons at the bottom of the dialog
-                                new FlatButton(
-                                  child: new Text("Ok"),
-                                  onPressed: () {
-                                    Navigator.of(context).pop();
-                                  },
-                                ),
-                              ],
-                            );
+                    Padding(
+                      padding: const EdgeInsets.only(top: 110),
+                      child: Container(
+                        height: queryData.size.height * 0.06,
+                        width: queryData.size.width * 0.580,
+                        child: RaisedButton(
+                          color: themeColor,
+                          onPressed: () async {
+                            var form = formKey.currentState;
+                            if (form.validate()) {
+                              form.save();
+
+                              print(await authUser.signUp(email, pass));
+                              authUser.sendVerification();
+                              showDialog(
+                                context: context,
+                                builder: (BuildContext context) {
+                                  // return object of type Dialog
+                                  return AlertDialog(
+                                    title: new Text("Email Varification"),
+                                    content: new Text(
+                                        "Click link in email for Varification"),
+                                    actions: <Widget>[
+                                      // usually buttons at the bottom of the dialog
+                                      new FlatButton(
+                                        child: new Text("Ok"),
+                                        onPressed: () {
+                                          Navigator.of(context).pop();
+                                        },
+                                      ),
+                                    ],
+                                  );
+                                },
+                              );
+                            } else {
+                              final snackBar =
+                                  SnackBar(content: Text('Not Valid Email'));
+                              Scaffold.of(context).showSnackBar(snackBar);
+                              setState(() {
+                                validate = true;
+                              });
+                            }
                           },
-                        );
-                      } else {
-                        final snackBar =
-                            SnackBar(content: Text('Not Valid Email'));
-                        Scaffold.of(context).showSnackBar(snackBar);
-                      }
-                    },
-                    child: new Text(
-                      "Sign up",
-                      style: TextStyle(color: Colors.white, fontSize: 20),
+                          child: new Text(
+                            "Sign up",
+                            style: TextStyle(color: Colors.white, fontSize: 20),
+                          ),
+                          shape: RoundedRectangleBorder(
+                              borderRadius:
+                                  BorderRadius.all(Radius.circular(15))),
+                        ),
+                      ),
                     ),
-                    shape: RoundedRectangleBorder(
-                        borderRadius: BorderRadius.all(Radius.circular(15))),
-                  ),
+                  ],
                 ),
               ),
             ],

@@ -1,34 +1,34 @@
 {
   "project_info": {
-    "project_number": "236505550841",
-    "firebase_url": "https://barricade-3f11d.firebaseio.com",
-    "project_id": "barricade-3f11d",
-    "storage_bucket": "barricade-3f11d.appspot.com"
+    "project_number": "540531485576",
+    "firebase_url": "https://timetable-notifier.firebaseio.com",
+    "project_id": "timetable-notifier",
+    "storage_bucket": "timetable-notifier.appspot.com"
   },
   "client": [
     {
       "client_info": {
-        "mobilesdk_app_id": "1:236505550841:android:568528a8a20c3dca2f3728",
+        "mobilesdk_app_id": "1:540531485576:android:b265d1cbe7e3e3f3",
         "android_client_info": {
-          "package_name": "dsc.barricade"
+          "package_name": "host.timetable.timetablenotifier"
         }
       },
       "oauth_client": [
         {
-          "client_id": "236505550841-uf458kbhk06o887l62oiit2ddimq06s4.apps.googleusercontent.com",
+          "client_id": "540531485576-g1iq267a544nrq6btqqls2p75428em10.apps.googleusercontent.com",
           "client_type": 3
         }
       ],
       "api_key": [
         {
-          "current_key": "AIzaSyB96YyUWdx-3JnZJFEmSyQG6PqxxxjhthE"
+          "current_key": "AIzaSyDbmzHAR5QHALS1S4Bp8ZrfQ-lgtC-xHCU"
         }
       ],
       "services": {
         "appinvite_service": {
           "other_platform_oauth_client": [
             {
-              "client_id": "236505550841-uf458kbhk06o887l62oiit2ddimq06s4.apps.googleusercontent.com",
+              "client_id": "540531485576-g1iq267a544nrq6btqqls2p75428em10.apps.googleusercontent.com",
               "client_type": 3
             }
           ]

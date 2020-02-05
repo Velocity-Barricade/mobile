@@ -3,6 +3,7 @@ import 'package:barricade/Values/colors.dart';
 import 'package:flutter/material.dart';
 import 'package:barricade/Screens/CourseAddDrop/Components/search_bar.dart';
 import 'Components/friend_list.dart';
+import 'package:barricade/Screens/Drawer/Drawer.dart';
 
 class HomeScreen extends StatefulWidget {
   @override
@@ -35,7 +36,7 @@ class _HomeScreenState extends State<HomeScreen> {
           size: 3,
         ),
       ),
-      drawer: new Drawer(),
+      drawer: new DrawerScreen(),
       body: Column(
         mainAxisSize: MainAxisSize.max,
         children: <Widget>[

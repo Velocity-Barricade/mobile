@@ -1,5 +1,6 @@
 import 'package:barricade/Screens/TimeTable/Components/class_card.dart';
 import 'package:barricade/Screens/TimeTable/Components/timetable.dart';
+import 'package:barricade/Utils/local_storage_handler.dart';
 import 'package:barricade/Values/colors.dart';
 import 'package:flutter/material.dart';
 
@@ -8,7 +9,14 @@ class FreindTimeTable extends StatefulWidget {
   _FreindTimeTableState createState() => _FreindTimeTableState();
 }
 
+
 class _FreindTimeTableState extends State<FreindTimeTable> {
+
+  @override
+  void initState() {
+    // TODO: implement initState
+    super.initState();
+  }
   @override
   Widget build(BuildContext context) {
     int section1=17;

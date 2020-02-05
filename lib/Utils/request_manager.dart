@@ -4,13 +4,15 @@ import 'package:flutter/material.dart';
 
 class RequestManager{
   static final RequestManager _singleton = new RequestManager._internal();
-
-  String baseUrl = "http://";
-  String getCourse;
+  Dio dio;
+//  String baseUrl = "http://";
+//  String getCourse;
 
   getCompletetimetable(){}
 
-  getClasses({@required String email}){}
+  getClasses({@required String email}){
+
+  }
 
   updateCourses(@required var courseList){}
 
@@ -24,7 +26,8 @@ class RequestManager{
   }
 
   RequestManager._internal() {
-    Dio dio= Dio();
+   dio = new Dio();
+
 
   }
 

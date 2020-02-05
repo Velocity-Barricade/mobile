@@ -1,4 +1,5 @@
 import 'package:barricade/Screens/Registration/registerValidators.dart';
+import 'package:barricade/Utils/local_storage_handler.dart';
 import 'package:flutter/material.dart';
 import 'package:barricade/Screens/Login/LoginServices.dart';
 import 'package:barricade/Values/colors.dart';
@@ -9,6 +10,10 @@ class Registeration extends StatefulWidget {
 }
 
 class _RegisterationState extends State<Registeration> {
+
+
+
+
   AuthUser authUser = new AuthUser();
   var email;
   var pass;
@@ -213,6 +218,15 @@ class _RegisterationState extends State<Registeration> {
         ),
       ),
     );
+  }
+
+  @override
+  void initState() {
+    // TODO: implement initState
+    super.initState();
+//    StorageHandler local = StorageHandler();
+//    print(local.isInitialized);
+
   }
 }
 

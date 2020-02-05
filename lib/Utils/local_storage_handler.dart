@@ -1,3 +1,4 @@
+
 import 'package:shared_preferences/shared_preferences.dart';
 
 class StorageHandler{
@@ -22,12 +23,17 @@ class StorageHandler{
 
   getFriends(){}
 
+  getInstance({SharedPreferences prefrences})
+  {
+    this.preferences=prefrences;
+    this.isInitialized=true;
+  }
+
 
 
 
   StorageHandler._internal() {
-//    SharedPreferences preferences= await SharedPreferences.getInstance();
-      isInitialized = true;
+
   }
 
 

@@ -1,16 +1,12 @@
-import 'package:flutter/material.dart';
-
-
-
-class CourseClass{
-  int id;
-  int course_id;
+class CourseClass {
+  String name;
   String venue;
   String time;
-  String day;
-  bool isHardCoded;
 
-  CourseClass({this.course_id,this.day,this.id,this.isHardCoded,this.time,this.venue,});
+  CourseClass({this.name, this.venue, this.time});
 
+  factory CourseClass.fromJson(Map<String, dynamic> json) {
+    return CourseClass(
+        name: json['name'], venue: json['venue'], time: json['time']);
+  }
 }
-

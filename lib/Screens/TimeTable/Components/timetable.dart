@@ -16,7 +16,7 @@ class _TimeTableState extends State<TimeTable> {
   Widget build(BuildContext context) {
     var leftPadding=0.0;
     return DefaultTabController(
-      length: 5,
+      length: 6,
 
       child: Scaffold(
         backgroundColor: Colors.white,
@@ -30,22 +30,34 @@ class _TimeTableState extends State<TimeTable> {
               child: Column(
                 children: <Widget>[
                   new Expanded(child: new Container()),
-                  new TabBar(
-                    //isScrollable: true,
+                  Container(
+                    height: 40,
+                    child: ListView(
+                      scrollDirection: Axis.horizontal,
+                      children: <Widget>[
+                        Container(color: Colors.white,width: 100,height: 0,),
+                        new TabBar(
+                          isScrollable: true,
 
-                    indicator: CustomTabIndicator(),
-                    unselectedLabelColor: themeGrey,
-                    tabs: [Padding(
-                      padding: const EdgeInsets.all(4.0),
-                      child: new Text("Mon"),
-                    )
-                      , new Text("Tue")
-                      , new Text("Wed")
-                      , new Text("Thu")
-                      , new Text("Fri")
+                          indicator: CustomTabIndicator(),
+                          unselectedLabelColor: themeGrey,
+//                    labelPadding: EdgeInsets.only(left: 0),
+                          tabs: [
+
+                            new Text("Mon",style: TextStyle(fontSize: 18),)
+                            , new Text("Tue",style: TextStyle(fontSize: 18),)
+                            , new Text("Wed",style: TextStyle(fontSize: 18),)
+                            , new Text("Thu",style: TextStyle(fontSize: 18),)
+                            , new Text("Fri",style: TextStyle(fontSize: 18),)
+                            , new Text("Sat",style: TextStyle(fontSize: 18),)
 
 
-                    ],
+                          ],
+                        ),
+                        Container(color: Colors.white,width: 100,height: 0,),
+
+                      ],
+                    ),
                   ),
                 ],
               ),
@@ -54,6 +66,7 @@ class _TimeTableState extends State<TimeTable> {
         ),
         body: new TabBarView(
           children: <Widget>[
+            new DayList(),
             new DayList(),
             new DayList(),
             new DayList(),

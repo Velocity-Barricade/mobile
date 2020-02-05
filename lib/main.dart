@@ -13,6 +13,8 @@ import 'Screens/FriendTimeTable/friend_timetable_screen.dart';
 import 'Screens/HomeScreen/home_screen.dart';
 import 'package:google_sign_in/google_sign_in.dart';
 
+import 'Screens/TimeTable/timetable_screen.dart';
+import 'Utils/get_store.dart';
 import 'Utils/local_storage_handler.dart';
 import 'Utils/remote_config.dart';
 import 'Utils/signin_with_google.dart';
@@ -94,11 +96,16 @@ class _TestState extends State<Test> {
   @override
   Widget build(BuildContext context) {
     return Center(
-      child: new RaisedButton(onPressed: (){
+      child: new RaisedButton(onPressed: () async {
+
+        await get_store_timetable();
+//        print();
         Navigator.push(
           context,
-          MaterialPageRoute(builder: (context) => FreindTimeTable()),
+          MaterialPageRoute(builder: (context) => TimeTableScreen(TimeTable: get_timetable(),)),
         );
+//
+
       }),
     );
   }

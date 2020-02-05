@@ -2,6 +2,11 @@ import 'package:barricade/Screens/TimeTable/Components/timetable.dart';
 import 'package:flutter/material.dart';
 import 'package:barricade/Values/colors.dart';
 class TimeTableScreen extends StatefulWidget {
+
+  var TimeTable;
+  TimeTableScreen({this.TimeTable});
+
+
   @override
   _TimeTableScreenState createState() => _TimeTableScreenState();
 }
@@ -21,7 +26,7 @@ class _TimeTableScreenState extends State<TimeTableScreen> {
           padding: EdgeInsets.only(left:leftPadding),
           child: new Text("Timetable",style: TextStyle(color: themeColor,fontSize: 40),),
         ),
-        Expanded(child: TimeTable())
+        Expanded(child: TimeTable(timeTable: widget.TimeTable,))
 
       ],),
     );

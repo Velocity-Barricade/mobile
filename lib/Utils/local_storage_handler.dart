@@ -1,4 +1,7 @@
+//import '';
+import 'dart:convert';
 
+import 'package:flutter/cupertino.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 
 class StorageHandler{
@@ -11,9 +14,19 @@ class StorageHandler{
     return _singleton;
   }
 
-  storeClasses(){}
+  storeClasses({var timeTable,String email}){
+//    jsonEncode(value)
+    print("--------------");
+//    print(timeTable);
+    print("-------------");
+    String timetable = json.encode(timeTable);
+    this.preferences.setString(email, timetable);
+  }
 
-  getClasses(){}
+  getClasses({String email}){
+    String timeTable=this.preferences.getString(email);
+    return json.decode(timeTable);
+  }
 
   storeTimetable(){}
 

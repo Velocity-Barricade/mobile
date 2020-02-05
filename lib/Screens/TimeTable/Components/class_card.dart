@@ -5,7 +5,8 @@ import 'package:flutter/material.dart';
 class ClassCard extends StatefulWidget {
   int Number;
   bool upcoming;
-  ClassCard({this.Number,this.upcoming=false});
+  String venue,name, time;
+  ClassCard({this.Number,this.upcoming=false,this.name,this.venue,this.time});
   @override
   _ClassCardState createState() => _ClassCardState();
 }
@@ -38,7 +39,7 @@ class _ClassCardState extends State<ClassCard> {
                   crossAxisAlignment: CrossAxisAlignment.start,
                   mainAxisAlignment: MainAxisAlignment.center,
                   children: <Widget>[
-                    new Text("E${widget.Number}",
+                    new Text("${widget.venue}",
                       style: TextStyle(color: Colors.white,fontSize: 20,fontWeight: FontWeight.w500),
                     ),
                     new Text("ISPM",
@@ -54,11 +55,11 @@ class _ClassCardState extends State<ClassCard> {
                   crossAxisAlignment: CrossAxisAlignment.start,
                   mainAxisAlignment: MainAxisAlignment.center,
                 children: <Widget>[
-                  new Text("8:00 - 8:55",
+                  new Text(widget.time,
                     style: TextStyle(color: Colors.white,fontSize: 20,fontWeight: FontWeight.w500),
 
                   ),
-                  new Text("DR. NomanDurrani",
+                  new Text(widget.name,
                     style: TextStyle(color: Colors.white,fontSize: 15,fontWeight: FontWeight.w300),
 
                   )

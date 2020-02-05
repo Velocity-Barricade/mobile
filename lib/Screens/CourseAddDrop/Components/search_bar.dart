@@ -1,14 +1,40 @@
 import 'package:flutter/material.dart';
 
-
-class SearchBar extends StatefulWidget {
+class Searchbar extends SearchDelegate<String> {
   @override
-  _SearchBarState createState() => _SearchBarState();
-}
+  List<Widget> buildActions(BuildContext context) {
+    return [
+      IconButton(
+          onPressed: () {
+            query = "";
+          },
+          icon: Icon(Icons.clear))
+    ];
+  }
 
-class _SearchBarState extends State<SearchBar> {
   @override
-  Widget build(BuildContext context) {
-    return Container();
+  Widget buildLeading(BuildContext context) {
+    return IconButton(
+        onPressed: () {
+          close(context, null);
+        },
+        icon: AnimatedIcon(
+          icon: AnimatedIcons.menu_arrow,
+          progress: transitionAnimation,
+        ));
+  }
+
+  @override
+  Widget buildResults(BuildContext context) {}
+  final suggestionList = null;
+  @override
+  Widget buildSuggestions(BuildContext context) {
+    return ListView.builder(
+      itemBuilder: (context, index) => ListTile(
+        leading: Icon(Icons.person),
+        title: Text(null),
+      ),
+      itemCount: 0,
+    );
   }
 }

@@ -9,4 +9,9 @@ class CourseClass {
     return CourseClass(
         name: json['name'], venue: json['venue'], time: json['time']);
   }
+
+  @override
+  String toString() {
+    return "name: $name, venue: $venue, time: $time";
+  }
 }

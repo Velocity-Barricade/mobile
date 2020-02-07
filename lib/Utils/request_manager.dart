@@ -12,7 +12,11 @@ class RequestManager {
 //  String baseUrl = "http://";
 //  String getCourse;
 
-  getCompletetimetable() {}
+  getCompletetimetable() async {
+    String url= Config.baseUrl+Config.getCompleteTimetableRoute;
+    Response response= await Dio().get(url);
+    return response.data;
+  }
 
   static getClasses({@required String email}) async {
     print("inside getClasses");

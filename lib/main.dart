@@ -2,19 +2,20 @@ import 'package:barricade/Models/config.dart';
 import 'package:barricade/Screens/Login/LoginServices.dart';
 import 'package:barricade/Screens/Login/login_screen.dart';
 import 'package:barricade/Screens/Registration/register.dart';
+import 'package:barricade/Utils/get_store.dart';
+import 'package:barricade/Utils/request_manager.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 //import 'Screens./Registration/register.dart';
 import 'package:camera/camera.dart';
 
+import 'Screens/CompleteTimeTable/CompleteTimeTableScreen.dart';
 import 'Screens/CourseAddDrop/course_add_drop_screen.dart';
 import 'Screens/FriendTimeTable/friend_timetable_screen.dart';
 import 'Screens/HomeScreen/home_screen.dart';
 import 'package:google_sign_in/google_sign_in.dart';
 
-import 'Screens/TimeTable/timetable_screen.dart';
-import 'Utils/get_store.dart';
 import 'Utils/local_storage_handler.dart';
 import 'Utils/remote_config.dart';
 import 'Utils/signin_with_google.dart';
@@ -97,15 +98,13 @@ class _TestState extends State<Test> {
   Widget build(BuildContext context) {
     return Center(
       child: new RaisedButton(onPressed: () async {
+//       await get_store_timetable();
 
-        await get_store_timetable();
-//        print();
+        var timeTable=await RequestManager().getCompletetimetable();
         Navigator.push(
           context,
-          MaterialPageRoute(builder: (context) => TimeTableScreen(TimeTable: get_timetable(),)),
+          MaterialPageRoute(builder: (context) => CompleteTimeTableScreen(completeTimetable: timeTable,)),
         );
-//
-
       }),
     );
   }

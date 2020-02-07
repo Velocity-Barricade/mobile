@@ -100,6 +100,9 @@ class _HomeScreenState extends State<HomeScreen> {
                                       ClassCard(
                                         Number: 2,
                                         upcoming: true,
+                                        time: "99",
+                                        name: "dd",
+                                        venue: "dd",
                                       ),
                                       Align(
                                         alignment: Alignment.centerRight,

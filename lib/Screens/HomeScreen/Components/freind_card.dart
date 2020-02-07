@@ -9,10 +9,18 @@ class _FreindCardState extends State<FreindCard> {
   @override
   Widget build(BuildContext context) {
     return Card(
-      color: themeColor,
+     // color: themeColor,
       elevation: 2,
       shape: RoundedRectangleBorder(borderRadius: BorderRadius.all(Radius.circular(16))),
       child: Container(
+        decoration: BoxDecoration(gradient: LinearGradient(
+          begin: Alignment.topLeft,
+          end: Alignment.bottomRight,
+          colors: [themeColor,themeSecondary],
+
+        ),
+            borderRadius: BorderRadius.all(Radius.circular(16))
+        ),
 //        height: 134,
         width: 120,
         child: Column(
@@ -25,6 +33,7 @@ class _FreindCardState extends State<FreindCard> {
                 Expanded(
                     child: Container(
 //                      color: Colors.green,
+
                       child: Column(
                         mainAxisAlignment: MainAxisAlignment.center,
                         children: <Widget>[

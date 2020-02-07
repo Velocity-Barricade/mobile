@@ -26,13 +26,6 @@ class RequestManager {
     try {
       print(url);
       Response response = await Dio().get(url);
-//      Map<String, dynamic> parsedMap = new Map();
-//
-//      response.data.forEach((k, v) {
-//        parsedMap[k] = v.map((title) => CourseClass.fromJson(title)).toList();
-//      });
-//
-//      print(parsedMap);
 
       return response.data;
     } catch (e) {

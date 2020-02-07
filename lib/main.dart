@@ -2,7 +2,7 @@ import 'package:barricade/Models/config.dart';
 import 'package:barricade/Screens/Login/LoginServices.dart';
 import 'package:barricade/Screens/Login/login_screen.dart';
 import 'package:barricade/Screens/Registration/register.dart';
-import 'package:barricade/Utils/get_store.dart';
+import 'package:barricade/Utils/local_storage_handler.dart';
 import 'package:barricade/Utils/request_manager.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
@@ -87,7 +87,7 @@ class _TestState extends State<Test> {
     super.initState();
     fetchRemoteConfig().then((val){
       SharedPreferences.getInstance().then((prefs){
-        StorageHandler().getInstance(prefrences: prefs);
+        StorageHandler().getInstance(preferences: prefs);
         print('done');
 
       });

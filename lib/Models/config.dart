@@ -22,18 +22,15 @@ class Config {
       return defaultValue;
     }
 
-    return storageHandler.preferences.getString(key);
+    return storageHandler.getValue(key);
   }
 
   static persistConfigToSharedPreferences() {
-    storageHandler.preferences.setString("baseUrl", baseUrl);
-    storageHandler.preferences
-        .setString("updateCourseRoute", updateCourseRoute);
-    storageHandler.preferences
-        .setString("getUserClassesRoute", getUserClassesRoute);
-    storageHandler.preferences
-        .setString("getCompleteTimetableRoute", getCompleteTimetableRoute);
-    storageHandler.preferences.setString("getAllClassesRoute", getAllClassesRoute);
+    storageHandler.setValue("baseUrl", baseUrl);
+    storageHandler.setValue("updateCourseRoute", updateCourseRoute);
+    storageHandler.setValue("getUserClassesRoute", getUserClassesRoute);
+    storageHandler.setValue("getCompleteTimetableRoute", getCompleteTimetableRoute);
+    storageHandler.setValue("getAllClassesRoute", getAllClassesRoute);
   }
 
   static fromJson(Map<String, RemoteConfigValue> json) {

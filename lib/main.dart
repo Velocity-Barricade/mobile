@@ -100,7 +100,7 @@ class _TestState extends State<Test> {
       child: new RaisedButton(onPressed: () async {
 //       await get_store_timetable();
 
-        var timeTable=await RequestManager().getCompletetimetable();
+        var timeTable=await RequestManager().getCompleteTimetable();
         Navigator.push(
           context,
           MaterialPageRoute(builder: (context) => CompleteTimeTableScreen(completeTimetable: timeTable,)),

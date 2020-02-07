@@ -20,9 +20,13 @@ class StorageHandler {
     return this.preferences.getString(key);
   }
 
-  ParsedTimetable getTimetable(String email) {
+  ParsedTimetable getParsedTimetable(String email) {
     Map<String, dynamic> timetable = json.decode(this.getValue(email));
     return ParsedTimetable.fromJson(timetable);
+  }
+
+  bool containsKey(String key) {
+    return preferences.containsKey(key);
   }
 
   getInstance({SharedPreferences preferences}) {

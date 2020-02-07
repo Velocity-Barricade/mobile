@@ -4,6 +4,8 @@ import 'package:firebase_remote_config/firebase_remote_config.dart';
 class Config {
   static StorageHandler storageHandler = new StorageHandler();
 
+  static String completeTimetableKey = "completeTimetable";
+
 //  static String baseUrl = getValue("baseUrl", "http://timetablenotifier.com:3000");
   static String baseUrl = getValue("baseUrl", "http://52.200.188.3:3000");
   static String updateCourseRoute =

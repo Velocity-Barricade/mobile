@@ -1,38 +1,24 @@
-import 'package:barricade/Models/course_class.dart';
+import 'package:barricade/Screens/CompleteTimeTable/Components/upper_scaffold_body_tab_bar_view.dart';
+import 'package:barricade/Screens/TimeTable/Components/custom_tab_indicator.dart';
 import 'package:barricade/Values/colors.dart';
 import 'package:flutter/material.dart';
 
-import 'custom_tab_indicator.dart';
-import 'day_list.dart';
 
-
-
-class TimeTable extends StatefulWidget {
-  var timeTable;
-  Map<String, dynamic> parsedMap;
-  TimeTable({this.timeTable}){
-    parsedMap = new Map();
-
-    timeTable.forEach((k, v) {
-      parsedMap[k] = v.map((title) => CourseClass.fromJson(title)).toList();
-      print(parsedMap[k]);
-    });
-  }
+class UpperScaffold extends StatefulWidget {
+  var completeTimeTable;
+  UpperScaffold({this.completeTimeTable});
   @override
-  _TimeTableState createState() => _TimeTableState();
+  _UpperScaffoldState createState() => _UpperScaffoldState();
 }
 
-class _TimeTableState extends State<TimeTable> {
+class _UpperScaffoldState extends State<UpperScaffold> {
+ var leftPadding =18.0;
   @override
   Widget build(BuildContext context) {
-    var leftPadding=0.0;
     return DefaultTabController(
       length: 6,
-
       child: Scaffold(
-        backgroundColor: Colors.white,
-
-        appBar: new PreferredSize(
+        appBar:new PreferredSize(
           preferredSize: Size.fromHeight(46),
           child: new Container(
             color: Colors.white,
@@ -75,18 +61,8 @@ class _TimeTableState extends State<TimeTable> {
             ),
           ),
         ),
-        body: new TabBarView(
-          children: <Widget>[
-            new DayList(dayList: widget.parsedMap['0'],),
-            new DayList(dayList: widget.parsedMap['1'],),
-            new DayList(dayList: widget.parsedMap['2'],),
-            new DayList(dayList: widget.parsedMap['3'],),
-            new DayList(dayList: widget.parsedMap['4'],),
-            new DayList(dayList: widget.parsedMap['5'],),
-
-          ],
-        ),
-      )
+        body: new UpperScafoldTabBarView(timeTable: widget.completeTimeTable,),
+      ),
     );
   }
 }

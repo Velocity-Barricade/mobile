@@ -1,16 +1,16 @@
 import 'package:flutter/material.dart';
-import 'package:flutter/widgets.dart';
+import 'package:flare_splash_screen/flare_splash_screen.dart';
+import 'package:barricade/Screens/CourseAddDrop/course_add_drop_screen.dart';
 
-class SplashScreen extends StatefulWidget {
+class StartScreen extends StatefulWidget {
   @override
   State<StatefulWidget> createState() {
     // TODO: implement createState
-    return SplashScreenState();
+    return StartScreenState();
   }
 }
 
-class SplashScreenState extends State<SplashScreen>
-    with SingleTickerProviderStateMixin {
+class StartScreenState extends State<StartScreen> {
   @override
   void initState() {
     initState();
@@ -19,15 +19,6 @@ class SplashScreenState extends State<SplashScreen>
   @override
   Widget build(BuildContext context) {
     // TODO: implement build
-    return Scaffold(
-        body: Center(
-            child: Stack(fit: StackFit.expand, children: <Widget>[
-      Container(
-        decoration: BoxDecoration(color: Colors.white),
-      ),
-      Column(
-        children: <Widget>[],
-      ),
-    ])));
+    return null;
   }
 }

@@ -3,6 +3,7 @@ import 'package:barricade/Screens/FriendTimeTable/friend_timetable_screen.dart';
 import 'package:barricade/Screens/TimeTable/timetable_screen.dart';
 import 'package:barricade/Screens/CourseAddDrop/course_add_drop_screen.dart';
 import 'package:barricade/Screens/Drawer/Components/DrawerComponent.dart';
+import 'package:barricade/Models/course.dart';
 
 class DrawerScreen extends StatefulWidget {
   @override
@@ -28,7 +29,12 @@ class _DrawerScreenState extends State<DrawerScreen> {
           DrawerComponent(
             name: "CourseAddDrop",
             child: CourseAddDrop(
-              sugesstion: ["kmk", "njnjs"],
+              sugesstion: [
+                Course(name: "name", id: 778),
+                Course(name: "name", id: 778),
+                Course(name: "name", id: 778),
+                Course(name: "name", id: 778)
+              ],
             ),
             trail: Icon(Icons.people),
           ),

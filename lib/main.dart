@@ -5,11 +5,12 @@ import 'package:barricade/Screens/Registration/register.dart';
 import 'package:barricade/Utils/local_storage_handler.dart';
 import 'package:barricade/Utils/request_manager.dart';
 import 'package:firebase_auth/firebase_auth.dart';
+
 import 'package:flutter/material.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 //import 'Screens./Registration/register.dart';
 import 'package:camera/camera.dart';
-
+import "package:barricade/Screens/splashScreen/splashscreen.dart";
 import 'Screens/CompleteTimeTable/CompleteTimeTableScreen.dart';
 import 'Screens/CourseAddDrop/course_add_drop_screen.dart';
 import 'Screens/FriendTimeTable/friend_timetable_screen.dart';

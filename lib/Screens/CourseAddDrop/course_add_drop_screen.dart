@@ -1,10 +1,14 @@
 import 'package:barricade/Screens/CourseAddDrop/Components/course_list_card.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter/services.dart';
+import 'package:barricade/Models/course.dart';
 import 'package:loader_search_bar/loader_search_bar.dart';
 
+class ListSelected {
+  static List selected;
+}
+
 class CourseAddDrop extends StatefulWidget {
-  List sugesstion;
+  List<Course> sugesstion;
   CourseAddDrop({Key key, @required this.sugesstion}) : super(key: key);
   @override
   _CourseAddDropState createState() => _CourseAddDropState(sugesstion);
@@ -13,22 +17,23 @@ class CourseAddDrop extends StatefulWidget {
 class _CourseAddDropState extends State<CourseAddDrop> {
   int flexSearch = 20;
   int flexCourseList = 80;
-  List sugesstion;
+  List<Course> sugesstion;
   _CourseAddDropState(this.sugesstion);
 
   List filterPersonsByQuery(String query) {
     print(sugesstion);
     return sugesstion
         .where((courseQuery) =>
-            courseQuery.toLowerCase().contains(query.toLowerCase()))
+            courseQuery.name.toLowerCase().contains(query.toLowerCase()))
         .toList();
   }
 
-  Widget buildPersonRow(var course) {
+  Widget buildPersonRow(dynamic course) {
+    print(course.name);
     return Container(
       color: Colors.white,
       child: Column(
-        children: [CourseListCard()],
+        children: [CourseListCard(course: course)],
       ),
     );
   }
@@ -36,6 +41,10 @@ class _CourseAddDropState extends State<CourseAddDrop> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+      floatingActionButton: FloatingActionButton(
+        onPressed: () {},
+        child: Text("OK"),
+      ),
       appBar: new SearchBar(
         loader: QuerySetLoader(
           querySetCall: filterPersonsByQuery,
@@ -52,13 +61,13 @@ class _CourseAddDropState extends State<CourseAddDrop> {
         ),
       ),
       body: Container(
-        child: Column(
-          mainAxisSize: MainAxisSize.max,
-          children: <Widget>[
-            CourseListCard(),
-          ],
-        ),
-      ),
+          child: ListView.builder(
+              itemCount: sugesstion.length,
+              itemBuilder: (context, index) {
+                return CourseListCard(
+                  course: sugesstion[index],
+                );
+              })),
     );
   }
 }

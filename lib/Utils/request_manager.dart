@@ -1,47 +1,31 @@
-//import 'd';
+
 import 'dart:convert';
 
 import 'package:barricade/Models/config.dart';
-import 'package:barricade/Models/course_class.dart';
+import 'package:barricade/Models/parsedTimetable.dart';
+import 'package:barricade/Utils/local_storage_handler.dart';
 import "package:dio/dio.dart";
 import 'package:flutter/material.dart';
 
 class RequestManager {
   static final RequestManager _singleton = new RequestManager._internal();
   Dio dio;
-//  String baseUrl = "http://";
-//  String getCourse;
+  StorageHandler storageHandler;
 
-  getCompletetimetable() async {
-    String url= Config.baseUrl+Config.getCompleteTimetableRoute;
-    Response response= await Dio().get(url);
-    return response.data;
+  getCompleteTimetable() async {
+    String url = Config.baseUrl + Config.getCompleteTimetableRoute;
+    Response response = await dio.get(url);
+    storageHandler.setValue(Config.completeTimetableKey, json.encode(response.data));
   }
 
-  getCourselist() async {
-    String url= Config.baseUrl+Config.baseUrl;
-    Response response= await Dio().get(url);
-    return response.data;
-  }
-
-
-  static getClasses({@required String email}) async {
-    print("inside getClasses");
+  getClasses({@required String email}) async {
     String url =
         Config.baseUrl + Config.getUserClassesRoute.replaceAll(":email", email);
 
     try {
       print(url);
-      Response response = await Dio().get(url);
-//      Map<String, dynamic> parsedMap = new Map();
-//
-//      response.data.forEach((k, v) {
-//        parsedMap[k] = v.map((title) => CourseClass.fromJson(title)).toList();
-//      });
-//
-//      print(parsedMap);
-
-      return response.data;
+      Response response = await dio.get(url);
+      storageHandler.setValue(email, json.encode(response.data));
     } catch (e) {
       print(e);
     }
@@ -59,5 +43,6 @@ class RequestManager {
 
   RequestManager._internal() {
     dio = new Dio();
+    storageHandler = new StorageHandler();
   }
 }

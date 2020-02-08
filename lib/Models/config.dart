@@ -4,6 +4,8 @@ import 'package:firebase_remote_config/firebase_remote_config.dart';
 class Config {
   static StorageHandler storageHandler = new StorageHandler();
 
+  static String completeTimetableKey = "completeTimetable";
+
 //  static String baseUrl = getValue("baseUrl", "http://timetablenotifier.com:3000");
   static String baseUrl = getValue("baseUrl", "http://52.200.188.3:3000");
   static String updateCourseRoute =
@@ -23,7 +25,7 @@ class Config {
       return defaultValue;
     }
 
-    return storageHandler.preferences.getString(key);
+    return storageHandler.getValue(key);
   }
 
   static persistConfigToSharedPreferences() {
@@ -36,6 +38,11 @@ class Config {
         .setString("getCompleteTimetableRoute", getCompleteTimetableRoute);
 
     storageHandler.preferences.setString("getAllClassesRoute", getAllClassesRoute);
+    storageHandler.setValue("baseUrl", baseUrl);
+    storageHandler.setValue("updateCourseRoute", updateCourseRoute);
+    storageHandler.setValue("getUserClassesRoute", getUserClassesRoute);
+    storageHandler.setValue("getCompleteTimetableRoute", getCompleteTimetableRoute);
+    storageHandler.setValue("getAllClassesRoute", getAllClassesRoute);
   }
 
   static fromJson(Map<String, RemoteConfigValue> json) {

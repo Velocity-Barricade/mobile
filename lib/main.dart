@@ -20,44 +20,39 @@ import 'Utils/local_storage_handler.dart';
 import 'Utils/remote_config.dart';
 import 'Utils/signin_with_google.dart';
 
-
 List<CameraDescription> cameraList;
 
-Future main()
-async {
+Future main() async {
 //  cameraList = await availableCameras();
 //  runApp(MyApp(cameralist: cameraList,));
 //    SharedPreferences preferences = await SharedPreferences.getInstance();
 //    StorageHandler().getInstance(prefrences: preferences);
-    runApp(MyApp());
+  runApp(MyApp());
 }
+
 class MyApp extends StatefulWidget {
 //  var cameralist;
 //  MyApp({this.cameralist}){
 //  }
-
 
   @override
   _MyAppState createState() => _MyAppState();
 }
 
 class _MyAppState extends State<MyApp> {
-  AuthUser authFunc =  new AuthUser();
+  AuthUser authFunc = new AuthUser();
   @override
   Widget build(BuildContext context) {
-
     return MaterialApp(
-
       title: "Bank App Neomorphism",
       debugShowCheckedModeBanner: false,
       home: Scaffold(
-        body: Test(),
-        floatingActionButton: FloatingActionButton (onPressed: () async {
+          body: Test(),
+          floatingActionButton: FloatingActionButton(
+            onPressed: () async {
 //          print('here');
-
-         },)
-
-      ),
+            },
+          )),
     );
   }
 }
@@ -85,25 +80,25 @@ class _TestState extends State<Test> {
   void initState() {
     // TODO: implement initState
     super.initState();
-    fetchRemoteConfig().then((val){
-      SharedPreferences.getInstance().then((prefs){
+    fetchRemoteConfig().then((val) {
+      SharedPreferences.getInstance().then((prefs) {
         StorageHandler().getInstance(preferences: prefs);
         print('done');
-
       });
 //      Config.
     });
   }
+
   @override
   Widget build(BuildContext context) {
     return Center(
       child: new RaisedButton(onPressed: () async {
 //       await get_store_timetable();
 
-        var timeTable=await RequestManager().getCompleteTimetable();
+        // var timeTable = await RequestManager().getCompleteTimetable();
         Navigator.push(
           context,
-          MaterialPageRoute(builder: (context) => CompleteTimeTableScreen(completeTimetable: timeTable,)),
+          MaterialPageRoute(builder: (context) => HomeScreen()),
         );
       }),
     );

@@ -27,7 +27,9 @@ class _DrawerScreenState extends State<DrawerScreen> {
           ),
           DrawerComponent(
             name: "CourseAddDrop",
-            child: CourseAddDrop(),
+            child: CourseAddDrop(
+              sugesstion: ["kmk", "njnjs"],
+            ),
             trail: Icon(Icons.people),
           ),
         ],

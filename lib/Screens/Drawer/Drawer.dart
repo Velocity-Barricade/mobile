@@ -30,10 +30,14 @@ class _DrawerScreenState extends State<DrawerScreen> {
             name: "CourseAddDrop",
             child: CourseAddDrop(
               sugesstion: [
-                Course(name: "name", id: 778),
-                Course(name: "name", id: 778),
-                Course(name: "name", id: 778),
-                Course(name: "name", id: 778)
+                Course(name: "name1", id: 778),
+                Course(name: "name3", id: 778),
+                Course(name: "name2", id: 778),
+                Course(name: "name4", id: 778),
+                Course(name: "name5", id: 778),
+                Course(name: "name6", id: 778),
+                Course(name: "name7", id: 778),
+                Course(name: "name8", id: 778),
               ],
             ),
             trail: Icon(Icons.people),

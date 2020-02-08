@@ -23,6 +23,11 @@ class _CourseListCardState extends State<CourseListCard> {
         trailing: Checkbox(
           value: selectvalue,
           onChanged: (bool value) {
+            if (!value && selectvalue)
+              ListSelected.selected.remove(widget.course);
+            else if (value && !selectvalue)
+              ListSelected.selected.add(widget.course);
+            print(ListSelected.selected);
             setState(() {
               selectvalue = value;
             });

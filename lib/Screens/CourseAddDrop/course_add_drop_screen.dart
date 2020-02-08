@@ -4,7 +4,7 @@ import 'package:barricade/Models/course.dart';
 import 'package:loader_search_bar/loader_search_bar.dart';
 
 class ListSelected {
-  static List selected;
+  static List selected = [];
 }
 
 class CourseAddDrop extends StatefulWidget {
@@ -42,7 +42,12 @@ class _CourseAddDropState extends State<CourseAddDrop> {
   Widget build(BuildContext context) {
     return Scaffold(
       floatingActionButton: FloatingActionButton(
-        onPressed: () {},
+        onPressed: () {
+          //  Shakeeb List of Selected Courses
+          for (var i in ListSelected.selected) {
+            print(i.name);
+          }
+        },
         child: Text("OK"),
       ),
       appBar: new SearchBar(

@@ -28,7 +28,7 @@ Future main() async {
 //  runApp(MyApp(cameralist: cameraList,));
 //    SharedPreferences preferences = await SharedPreferences.getInstance();
 //    StorageHandler().getInstance(prefrences: preferences);
-  runApp(MyApp());
+  runApp(StartScreen());
 }
 
 class MyApp extends StatefulWidget {

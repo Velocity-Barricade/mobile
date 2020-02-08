@@ -12,13 +12,16 @@ class StartScreen extends StatefulWidget {
 
 class StartScreenState extends State<StartScreen> {
   @override
-  void initState() {
-    initState();
-  }
-
-  @override
   Widget build(BuildContext context) {
     // TODO: implement build
-    return null;
+    return SplashScreen.navigate(
+      name: 'assets/splashScreen.flr',
+      next: CourseAddDrop(
+        sugesstion: null,
+      ),
+      until: () => Future.delayed(Duration(seconds: 5)),
+      startAnimation: '1',
+      backgroundColor: Colors.white,
+    );
   }
 }

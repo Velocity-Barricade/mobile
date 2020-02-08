@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:barricade/Screens/CourseAddDrop/course_add_drop_screen.dart';
+import "package:barricade/Values/colors.dart";
 
 class CourseListCard extends StatefulWidget {
   var course;
@@ -15,23 +16,28 @@ class _CourseListCardState extends State<CourseListCard> {
     // TODO: implement build
     return Container(
       height: 70,
-      child: ListTile(
-        title: Text(
-          widget.course.name,
-          style: DefaultTextStyle.of(context).style.apply(fontSizeFactor: 1.8),
-        ),
-        trailing: Checkbox(
-          value: selectvalue,
-          onChanged: (bool value) {
-            if (!value && selectvalue)
-              ListSelected.selected.remove(widget.course);
-            else if (value && !selectvalue)
-              ListSelected.selected.add(widget.course);
-            print(ListSelected.selected);
-            setState(() {
-              selectvalue = value;
-            });
-          },
+      child: Card(
+        color: themeSecondary,
+        child: ListTile(
+          title: Text(
+            widget.course.name,
+            style: DefaultTextStyle.of(context)
+                .style
+                .apply(fontSizeFactor: 1.8, color: Colors.white),
+          ),
+          trailing: Checkbox(
+            value: selectvalue,
+            onChanged: (bool value) {
+              if (!value && selectvalue)
+                ListSelected.selected.remove(widget.course);
+              else if (value && !selectvalue)
+                ListSelected.selected.add(widget.course);
+              print(ListSelected.selected);
+              setState(() {
+                selectvalue = value;
+              });
+            },
+          ),
         ),
       ),
     );

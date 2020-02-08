@@ -1,3 +1,4 @@
+import 'package:barricade/Screens/CourseAddDrop/Components/course_list_card.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:loader_search_bar/loader_search_bar.dart';
@@ -24,39 +25,14 @@ class _CourseAddDropState extends State<CourseAddDrop> {
 //      overlayStyle: SystemUiOverlayStyle(),
         defaultBar: AppBar(
           elevation: 0,
-          backgroundColor: Colors.blue,
+          backgroundColor: Colors.white,
         ),
       ),
       body: Container(
         child: Column(
           mainAxisSize: MainAxisSize.max,
           children: <Widget>[
-            Flexible(
-              flex: flexSearch,
-              child: Column(
-                children: <Widget>[
-                  Expanded(
-                    child: new Container(
-                      color: Colors.red,
-                      child: new Text("jkkkkl"),
-                    ),
-                  ),
-                ],
-              ),
-            ),
-            Flexible(
-              flex: flexCourseList,
-              child: Column(
-                children: <Widget>[
-                  Expanded(
-                    child: Container(
-                      color: Colors.blue,
-                      child: new Text("Pol"),
-                    ),
-                  ),
-                ],
-              ),
-            ),
+            CourseListCard(),
           ],
         ),
       ),

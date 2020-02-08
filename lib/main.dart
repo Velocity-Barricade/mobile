@@ -98,12 +98,12 @@ class _TestState extends State<Test> {
   Widget build(BuildContext context) {
     return Center(
       child: new RaisedButton(onPressed: () async {
-//       await get_store_timetable();
+       var timeTable = await get_store_timetable();
 
-        var timeTable=await RequestManager().getCompletetimetable();
+//        var timeTable=await RequestManager().getCompletetimetable();
         Navigator.push(
           context,
-          MaterialPageRoute(builder: (context) => CompleteTimeTableScreen(completeTimetable: timeTable,)),
+          MaterialPageRoute(builder: (context) => HomeScreen()),
         );
       }),
     );

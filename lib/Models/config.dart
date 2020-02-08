@@ -13,6 +13,8 @@ class Config {
   static String getCompleteTimetableRoute =
       getValue("getCompleteTimetableRoute", "/user/getCompleteTimetable");
 
+  static String getAllClassesRoute = getValue("getAllClassesRoute", "/course");
+
 //  Updated (other than default) are persisted to local sharedPreferences to
 //  use those as default next time app is opened
   static String getValue(String key, String defaultValue) {
@@ -32,6 +34,8 @@ class Config {
         .setString("getUserClassesRoute", getUserClassesRoute);
     storageHandler.preferences
         .setString("getCompleteTimetableRoute", getCompleteTimetableRoute);
+
+    storageHandler.preferences.setString("getAllClassesRoute", getAllClassesRoute);
   }
 
   static fromJson(Map<String, RemoteConfigValue> json) {
@@ -39,12 +43,15 @@ class Config {
     updateCourseRoute = json['update_course_route'].asString();
     getUserClassesRoute = json['get_user_classes_route'].asString();
     getCompleteTimetableRoute = json['get_complete_timetable_route'].asString();
+    getAllClassesRoute = json['get_all_classes_route'].asString();
+    persistConfigToSharedPreferences();
   }
 
   static Map<String, dynamic> toJson() => {
         'base_url': baseUrl,
         'update_course_route': updateCourseRoute,
         'get_user_classes_route': getUserClassesRoute,
-        'get_complete_timetable_route': getCompleteTimetableRoute
+        'get_complete_timetable_route': getCompleteTimetableRoute,
+        'get_all_classes_route': getAllClassesRoute
       };
 }

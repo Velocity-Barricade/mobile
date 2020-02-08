@@ -18,6 +18,13 @@ class RequestManager {
     return response.data;
   }
 
+  getCourselist() async {
+    String url= Config.baseUrl+Config.baseUrl;
+    Response response= await Dio().get(url);
+    return response.data;
+  }
+
+
   static getClasses({@required String email}) async {
     print("inside getClasses");
     String url =

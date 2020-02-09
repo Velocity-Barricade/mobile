@@ -5,6 +5,7 @@ class Config {
   static StorageHandler storageHandler = new StorageHandler();
 
   static String completeTimetableKey = "completeTimetable";
+  static String allCoursesKey = "allCourses";
 
 //  static String baseUrl = getValue("baseUrl", "http://timetablenotifier.com:3000");
   static String baseUrl = getValue("baseUrl", "http://52.200.188.3:3000");
@@ -14,7 +15,7 @@ class Config {
       getValue("getUserClassesRoute", "/user/getClasses/:email");
   static String getCompleteTimetableRoute =
       getValue("getCompleteTimetableRoute", "/user/getCompleteTimetable");
-  static String getAllClassesRoute = getValue("getAllClassesRoute", "/course");
+  static String getAllCoursesRoute = getValue("getAllCoursesRoute", "/course");
 
 //  Updated (other than default) are persisted to local sharedPreferences to
 //  use those as default next time app is opened
@@ -32,7 +33,7 @@ class Config {
     storageHandler.setValue("updateCourseRoute", updateCourseRoute);
     storageHandler.setValue("getUserClassesRoute", getUserClassesRoute);
     storageHandler.setValue("getCompleteTimetableRoute", getCompleteTimetableRoute);
-    storageHandler.setValue("getAllClassesRoute", getAllClassesRoute);
+    storageHandler.setValue("getAllCoursesRoute", getAllCoursesRoute);
   }
 
   static fromJson(Map<String, RemoteConfigValue> json) {
@@ -40,7 +41,7 @@ class Config {
     updateCourseRoute = json['update_course_route'].asString();
     getUserClassesRoute = json['get_user_classes_route'].asString();
     getCompleteTimetableRoute = json['get_complete_timetable_route'].asString();
-    getAllClassesRoute = json['get_all_classes_route'].asString();
+    getAllCoursesRoute = json['get_all_courses_route'].asString();
     persistConfigToSharedPreferences();
   }
 
@@ -49,6 +50,6 @@ class Config {
         'update_course_route': updateCourseRoute,
         'get_user_classes_route': getUserClassesRoute,
         'get_complete_timetable_route': getCompleteTimetableRoute,
-        'get_all_classes_route': getAllClassesRoute
+        'get_all_courses_route': getAllCoursesRoute
       };
 }

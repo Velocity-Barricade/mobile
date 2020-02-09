@@ -1,7 +1,7 @@
 import 'dart:convert';
 
 import 'package:barricade/Models/config.dart';
-import 'package:barricade/Models/parsedTimetable.dart';
+import 'package:barricade/Models/course.dart';
 import 'package:barricade/Utils/local_storage_handler.dart';
 import "package:dio/dio.dart";
 import 'package:flutter/material.dart';
@@ -14,27 +14,28 @@ class RequestManager {
   getCompleteTimetable() async {
     String url = Config.baseUrl + Config.getCompleteTimetableRoute;
     Response response = await dio.get(url);
-    storageHandler.setValue(Config.completeTimetableKey, json.encode(response.data));
+    storageHandler.setValue(
+        Config.completeTimetableKey, json.encode(response.data));
   }
 
-  getClasses({@required String email}) async {
+  getUserClasses({@required String email}) async {
     String url =
         Config.baseUrl + Config.getUserClassesRoute.replaceAll(":email", email);
-
-    try {
-      print(url);
-      Response response = await dio.get(url);
-      storageHandler.setValue(email, json.encode(response.data));
-    } catch (e) {
-      print(e);
-    }
+    Response response = await dio.get(url);
+    storageHandler.setValue(email, json.encode(response.data));
   }
 
-  updateCourses(@required var courseList) {}
+  getAllCourses() async {
+    String url = Config.baseUrl + Config.getAllCoursesRoute;
+    Response response = await dio.get(url);
+    storageHandler.setValue(
+        Config.allCoursesKey, json.encode(response.data));
+  }
 
-  addCourses({@required var cousreList}) {}
+  updateCourses(String uid, List<Course> coursesList) {
+    String url = Config.baseUrl + Config.updateCourseRoute;
 
-  addExtraClass({@required var extraClass}) {}
+  }
 
   factory RequestManager() {
     return _singleton;

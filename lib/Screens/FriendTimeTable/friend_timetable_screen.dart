@@ -79,7 +79,7 @@ class _FreindTimeTableState extends State<FreindTimeTable> {
                               children: <Widget>[
                                 Container(
                                     constraints: BoxConstraints(maxWidth: MediaQuery.of(context).size.width-40),
-                                    child: new ClassCard(Number: 2,)),
+                                    child: new ClassCard()),
                               ],
                             ),
 

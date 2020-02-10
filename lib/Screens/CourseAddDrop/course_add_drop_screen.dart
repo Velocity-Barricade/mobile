@@ -1,4 +1,8 @@
 import 'package:barricade/Screens/CourseAddDrop/Components/course_list_card.dart';
+import 'package:barricade/Utils/request_manager.dart';
+import 'package:barricade/Utils/signin_with_google.dart';
+import 'package:barricade/Values/colors.dart';
+import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:barricade/Models/course.dart';
 import 'package:loader_search_bar/loader_search_bar.dart';
@@ -9,19 +13,23 @@ class ListSelected {
 
 class CourseAddDrop extends StatefulWidget {
   List<Course> sugesstion;
-  CourseAddDrop({Key key, @required this.sugesstion}) : super(key: key);
+  CourseAddDrop({Key key, @required this.sugesstion}) : super(key: key){
+
+  }
   @override
   _CourseAddDropState createState() => _CourseAddDropState(sugesstion);
 }
 
 class _CourseAddDropState extends State<CourseAddDrop> {
+
+
   int flexSearch = 20;
   int flexCourseList = 80;
   List<Course> sugesstion;
   _CourseAddDropState(this.sugesstion);
 
   List filterPersonsByQuery(String query) {
-    print(sugesstion);
+//    print(sugesstion);
     return sugesstion
         .where((courseQuery) =>
             courseQuery.name.toLowerCase().contains(query.toLowerCase()))
@@ -29,7 +37,7 @@ class _CourseAddDropState extends State<CourseAddDrop> {
   }
 
   Widget buildPersonRow(dynamic course) {
-    print(course.name);
+//    print(course.name);
     return Container(
       color: Colors.white,
       child: Column(
@@ -39,14 +47,23 @@ class _CourseAddDropState extends State<CourseAddDrop> {
   }
 
   @override
+  void initState() {
+    // TODO: implement initState
+    super.initState();
+  }
+  @override
   Widget build(BuildContext context) {
+    RequestManager().getCourses();
     return Scaffold(
       floatingActionButton: FloatingActionButton(
-        onPressed: () {
+        onPressed: () async {
+//          await signInWithGoogle();
+//          todo add loader screen
+            //todo solve flicker on add drop
           //  Shakeeb List of Selected Courses
-          for (var i in ListSelected.selected) {
-            print(i.name);
-          }
+//          for (var i in ListSelected.selected) {
+//            print(i.name);
+//          }
         },
         child: Text("OK"),
       ),
@@ -65,14 +82,44 @@ class _CourseAddDropState extends State<CourseAddDrop> {
           backgroundColor: Colors.white,
         ),
       ),
-      body: Container(
-          child: ListView.builder(
-              itemCount: sugesstion.length,
-              itemBuilder: (context, index) {
-                return CourseListCard(
-                  course: sugesstion[index],
-                );
-              })),
+      body: Padding(
+        padding: const EdgeInsets.only(left:20.0,right: 20),
+        child: Container(
+          color: Colors.white,
+            child: Column(
+              mainAxisSize: MainAxisSize.max,
+              children: <Widget>[
+                Flexible(
+                    flex: 15,
+                    child: Column(
+
+                      children: <Widget>[
+                        Expanded(child: Row(
+                          children: <Widget>[
+                            Container(child: new Text("Available Courses",style: TextStyle(color: themeColor,fontSize: 32),)),
+                          ],
+                        )),
+                      ],
+                    )),
+                Flexible(
+                  flex: 85,
+                  child: Column(
+                    children: <Widget>[
+                      Expanded(child: Container(child:                 ListView.builder(
+                          itemCount: sugesstion.length,
+                          itemBuilder: (context, index) {
+                            return CourseListCard(
+                              course: sugesstion[index],
+                            );
+                          }),)),
+                    ],
+                  )
+
+
+                ),
+              ],
+            )),
+      ),
     );
   }
 }

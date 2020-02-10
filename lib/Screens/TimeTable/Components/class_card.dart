@@ -1,19 +1,38 @@
+import 'dart:convert';
+
+import 'package:barricade/Models/course_class.dart';
+import 'package:barricade/Models/parsedTimetable.dart';
+import 'package:barricade/Utils/local_storage_handler.dart';
 import 'package:barricade/Values/colors.dart';
 import 'package:flutter/material.dart';
 
 
 class ClassCard extends StatefulWidget {
-  int Number;
   bool upcoming;
+  CourseClass upcomingClass;
+  String email;
   String venue,name, time;
-  ClassCard({this.Number,this.upcoming=false,this.name,this.venue,this.time});
+  ClassCard({this.upcoming=false,this.name,this.venue,this.time}){
+    if(upcoming){
+      ParsedTimetable time=ParsedTimetable.fromJson(json.decode(StorageHandler().getValue("shakeebsiddiqui1998@gmail.com")));
+      upcomingClass =time.getUpcomingClass();
+    }
+  }
   @override
   _ClassCardState createState() => _ClassCardState();
 }
 
 class _ClassCardState extends State<ClassCard> {
   @override
+  void initState() {
+    // TODO: implement initState
+    super.initState();
+
+//todo add logic if upcoming class changes whiles user is on screen
+  }
+  @override
   Widget build(BuildContext context) {
+
     return Padding(
       padding: const EdgeInsets.only(bottom:0.0),
       child: Card(
@@ -39,7 +58,7 @@ class _ClassCardState extends State<ClassCard> {
                   crossAxisAlignment: CrossAxisAlignment.start,
                   mainAxisAlignment: MainAxisAlignment.center,
                   children: <Widget>[
-                    new Text("${widget.venue}",
+                    new Text("${(widget.upcomingClass!=null)?widget.upcomingClass.venue:widget.venue}",
                       style: TextStyle(color: Colors.white,fontSize: 20,fontWeight: FontWeight.w500),
                     ),
                     new Text("ISPM",
@@ -55,11 +74,11 @@ class _ClassCardState extends State<ClassCard> {
                   crossAxisAlignment: CrossAxisAlignment.start,
                   mainAxisAlignment: MainAxisAlignment.center,
                 children: <Widget>[
-                  new Text(widget.time,
+                  new Text((widget.upcomingClass!=null)?widget.upcomingClass.time:widget.time,
                     style: TextStyle(color: Colors.white,fontSize: 20,fontWeight: FontWeight.w500),
 
                   ),
-                  new Text(widget.name,
+                  new Text((widget.upcomingClass!=null)?widget.upcomingClass.name:widget.name,
                     style: TextStyle(color: Colors.white,fontSize: 15,fontWeight: FontWeight.w300),
 
                   )

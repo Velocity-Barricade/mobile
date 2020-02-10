@@ -4,7 +4,7 @@ import 'package:flutter/material.dart';
 import 'class_card.dart';
 
 class DayList extends StatefulWidget {
-  var dayList;
+  List<CourseClass> dayList;
   DayList({this.dayList});
   @override
   _DayListState createState() => _DayListState();
@@ -13,7 +13,7 @@ class DayList extends StatefulWidget {
 class _DayListState extends State<DayList> {
 
 
-  dynamic list;
+  List<CourseClass> list;
   var padding=0.0;
   @override
   void initState() {
@@ -31,7 +31,7 @@ class _DayListState extends State<DayList> {
       itemCount: list.length,
       itemBuilder: (BuildContext context,int index){
 
-      return ClassCard(Number: 1,venue: list[index].venue,
+      return ClassCard(venue: list[index].venue,
       name: list[index].name,
        time: list[index].time,
       );

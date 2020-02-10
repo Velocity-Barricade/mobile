@@ -1,3 +1,7 @@
+import 'dart:convert';
+
+import 'package:barricade/Models/config.dart';
+import 'package:barricade/Utils/local_storage_handler.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 
@@ -8,9 +12,26 @@ class FriendList extends StatefulWidget {
 }
 
 class _FriendListState extends State<FriendList> {
-  var list=[1,2,3,4,5,6,6,8,];
+  var list=[];
+  @override
+  void initState() {
+    // TODO: implement initState
+    super.initState();
+//    print()
+    String frends=StorageHandler().getValue(Config.freindsListKey);
+
+//    list=[];
+  }
+
   @override
   Widget build(BuildContext context) {
+    String frends=StorageHandler().getValue(Config.freindsListKey);
+
+    if(frends!= null && frends!='null'){
+      list=(json.decode(frends));
+    }
+
+    print(list);
     return Container(
 //      height: 200,
       child: ListView.builder(
@@ -18,7 +39,7 @@ class _FriendListState extends State<FriendList> {
         scrollDirection: Axis.horizontal,
           itemCount: list.length,
           itemBuilder: (BuildContext context,int index){
-        return FreindCard();
+        return FreindCard(email: list[index],);
       }),
     );
   }

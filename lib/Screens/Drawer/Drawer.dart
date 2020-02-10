@@ -1,3 +1,10 @@
+import 'dart:convert';
+
+import 'package:barricade/Models/parsedTimetable.dart';
+import 'package:barricade/Screens/AddFriends/add_freinds_screen.dart';
+import 'package:barricade/Utils/local_storage_handler.dart';
+import 'package:barricade/Utils/request_manager.dart';
+import 'package:barricade/Utils/validators.dart';
 import 'package:flutter/material.dart';
 import 'package:barricade/Screens/FriendTimeTable/friend_timetable_screen.dart';
 import 'package:barricade/Screens/TimeTable/timetable_screen.dart';
@@ -11,6 +18,8 @@ class DrawerScreen extends StatefulWidget {
 }
 
 class _DrawerScreenState extends State<DrawerScreen> {
+  List<Course> a = [];
+
   @override
   Widget build(BuildContext context) {
     return Drawer(
@@ -18,30 +27,48 @@ class _DrawerScreenState extends State<DrawerScreen> {
         children: <Widget>[
           DrawerComponent(
             name: "TimeTableScreen",
-            child: TimeTableScreen(),
+            child: TimeTableScreen(
+                TimeTable: ParsedTimetable.fromJson(
+              json.decode(
+                  StorageHandler().getValue("shakeebsiddiqui1998@gmail.com")),
+            )),
             trail: Icon(Icons.people),
           ),
+//          DrawerComponent(
+//            name: "FreindTimeTable",
+//            child: FreindTimeTable(),
+//            trail: Icon(Icons.people),
+//          ),
+
+          InkWell(
+              onTap: () async {
+                if (await hasNet()) {
+//                  todo add loader
+//                 var map = await RequestManager().getCourses();
+                  List<dynamic> list = await RequestManager().getCourses();
+                  for (dynamic i in list){
+                    a.add(Course(id: i['id'],name: i['name']));
+                  }
+
+                  Widget course = CourseAddDrop(
+                    sugesstion: a,
+                  );
+                  print("addding courses");
+                  Navigator.push(context,
+                      new MaterialPageRoute(builder: (context) => course));
+                } else {
+                  Scaffold.of(context)
+                      .showSnackBar(SnackBar(content: Text("Needs Internet")));
+                }
+              },
+              child: ListTile(
+                title: new Text("Course Add Drop"),
+              )),
           DrawerComponent(
-            name: "FreindTimeTable",
-            child: FreindTimeTable(),
+            name: "Add friends",
+            child: AddFriendsScreen(),
             trail: Icon(Icons.people),
-          ),
-          DrawerComponent(
-            name: "CourseAddDrop",
-            child: CourseAddDrop(
-              sugesstion: [
-                Course(name: "name1", id: 778),
-                Course(name: "name3", id: 778),
-                Course(name: "name2", id: 778),
-                Course(name: "name4", id: 778),
-                Course(name: "name5", id: 778),
-                Course(name: "name6", id: 778),
-                Course(name: "name7", id: 778),
-                Course(name: "name8", id: 778),
-              ],
-            ),
-            trail: Icon(Icons.people),
-          ),
+          )
         ],
       ),
     );

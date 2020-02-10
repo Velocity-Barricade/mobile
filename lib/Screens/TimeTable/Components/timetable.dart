@@ -1,4 +1,5 @@
 import 'package:barricade/Models/course_class.dart';
+import 'package:barricade/Models/parsedTimetable.dart';
 import 'package:barricade/Values/colors.dart';
 import 'package:flutter/material.dart';
 
@@ -8,15 +9,11 @@ import 'day_list.dart';
 
 
 class TimeTable extends StatefulWidget {
-  var timeTable;
+  ParsedTimetable timeTable;
   Map<String, dynamic> parsedMap;
-  TimeTable({this.timeTable}){
-    parsedMap = new Map();
+  TimeTable({@required this.timeTable}){
+//    parsedMap = new Map();
 
-    timeTable.forEach((k, v) {
-      parsedMap[k] = v.map((title) => CourseClass.fromJson(title)).toList();
-      print(parsedMap[k]);
-    });
   }
   @override
   _TimeTableState createState() => _TimeTableState();
@@ -77,12 +74,12 @@ class _TimeTableState extends State<TimeTable> {
         ),
         body: new TabBarView(
           children: <Widget>[
-            new DayList(dayList: widget.parsedMap['0'],),
-            new DayList(dayList: widget.parsedMap['1'],),
-            new DayList(dayList: widget.parsedMap['2'],),
-            new DayList(dayList: widget.parsedMap['3'],),
-            new DayList(dayList: widget.parsedMap['4'],),
-            new DayList(dayList: widget.parsedMap['5'],),
+            new DayList(dayList: widget.timeTable.getDayTimetable(0),),
+            new DayList(dayList: widget.timeTable.getDayTimetable(1),),
+            new DayList(dayList: widget.timeTable.getDayTimetable(2),),
+            new DayList(dayList: widget.timeTable.getDayTimetable(3),),
+            new DayList(dayList: widget.timeTable.getDayTimetable(4),),
+            new DayList(dayList: widget.timeTable.getDayTimetable(5),),
 
           ],
         ),

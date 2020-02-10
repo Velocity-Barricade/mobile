@@ -21,7 +21,7 @@ class ParsedTimetable {
     return timetable[day.toString()];
   }
 
-  getUpcomingClass() {
+  CourseClass getUpcomingClass() {
     DateTime now = new DateTime.now();
 
     for (int i = 0; i < 7; i++) {

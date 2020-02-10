@@ -23,7 +23,9 @@ class _HomeScreenState extends State<HomeScreen> {
             padding: EdgeInsets.only(left: 8.0, right: 18),
             child: InkWell(
                 onTap: () {
-                  showSearch(context: context, delegate: Searchbar());
+                  showSearch(context: context, delegate: Searchbar(
+
+                  ));
                 },
                 child: new Icon(
                   Icons.search,
@@ -98,7 +100,6 @@ class _HomeScreenState extends State<HomeScreen> {
                                             ),
                                           )),
                                       ClassCard(
-                                        Number: 2,
                                         upcoming: true,
                                         time: "99",
                                         name: "dd",

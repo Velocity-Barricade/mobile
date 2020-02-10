@@ -11,6 +11,7 @@ import 'package:shared_preferences/shared_preferences.dart';
 //import 'Screens./Registration/register.dart';
 import 'package:camera/camera.dart';
 import "package:barricade/Screens/splashScreen/splashscreen.dart";
+import 'Screens/AddFriends/add_freinds_screen.dart';
 import 'Screens/CompleteTimeTable/CompleteTimeTableScreen.dart';
 import 'Screens/CourseAddDrop/course_add_drop_screen.dart';
 import 'Screens/FriendTimeTable/friend_timetable_screen.dart';
@@ -28,7 +29,7 @@ Future main() async {
 //  runApp(MyApp(cameralist: cameraList,));
 //    SharedPreferences preferences = await SharedPreferences.getInstance();
 //    StorageHandler().getInstance(prefrences: preferences);
-  runApp(StartScreen());
+  runApp(MyApp());
 }
 
 class MyApp extends StatefulWidget {
@@ -47,13 +48,8 @@ class _MyAppState extends State<MyApp> {
     return MaterialApp(
       title: "Bank App Neomorphism",
       debugShowCheckedModeBanner: false,
-      home: Scaffold(
-          body: Test(),
-          floatingActionButton: FloatingActionButton(
-            onPressed: () async {
-//          print('here');
-            },
-          )),
+      home: Test(),
+
     );
   }
 }
@@ -81,23 +77,19 @@ class _TestState extends State<Test> {
   void initState() {
     // TODO: implement initState
     super.initState();
-    fetchRemoteConfig().then((val) {
-      SharedPreferences.getInstance().then((prefs) {
-        StorageHandler().getInstance(preferences: prefs);
-        print('done');
-      });
-//      Config.
-    });
+
   }
 
   @override
   Widget build(BuildContext context) {
     return Center(
       child: new RaisedButton(onPressed: () async {
-//       var timeTable = await get_store_timetable();
+
+        await signInWithGoogle();
+        await RequestManager().getClasses(email: 'shakeebsiddiqui1998@gmail.com');
         Navigator.push(
           context,
-          MaterialPageRoute(builder: (context) => HomeScreen()),
+          MaterialPageRoute(builder: (context) => StartScreen()),
         );
       }),
     );

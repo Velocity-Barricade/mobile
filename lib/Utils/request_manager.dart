@@ -12,23 +12,39 @@ class RequestManager {
   Dio dio;
   StorageHandler storageHandler;
 
+  getCourses() async {
+
+    String url = Config.baseUrl + Config.getAllClassesRoute;
+    print(url);
+    Response response = await dio.get(url);
+    return response.data;
+  }
   getCompleteTimetable() async {
     String url = Config.baseUrl + Config.getCompleteTimetableRoute;
     Response response = await dio.get(url);
     storageHandler.setValue(Config.completeTimetableKey, json.encode(response.data));
   }
 
-  getClasses({@required String email}) async {
+  Future <bool>getClasses({@required String email}) async {
     String url =
         Config.baseUrl + Config.getUserClassesRoute.replaceAll(":email", email);
 
     try {
       print(url);
       Response response = await dio.get(url);
-      storageHandler.setValue(email, json.encode(response.data));
+      if(response.statusCode==404){
+        return false;
+      }
+      else{
+//        print(response.statusCode);
+        storageHandler.setValue(email, json.encode(response.data));
+
+      }
     } catch (e) {
       print(e);
+      return false;
     }
+    return true;
   }
 
   updateCourses(@required var courseList) {}

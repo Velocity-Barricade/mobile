@@ -1,9 +1,11 @@
+import 'package:barricade/Models/course_class.dart';
+import 'package:barricade/Models/parsedTimetable.dart';
 import 'package:barricade/Screens/TimeTable/Components/timetable.dart';
 import 'package:flutter/material.dart';
 import 'package:barricade/Values/colors.dart';
 class TimeTableScreen extends StatefulWidget {
 
-  var TimeTable;
+  ParsedTimetable TimeTable;
   TimeTableScreen({this.TimeTable});
 
 

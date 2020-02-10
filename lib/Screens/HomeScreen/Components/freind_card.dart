@@ -1,11 +1,29 @@
+import 'dart:convert';
+
+import 'package:barricade/Models/config.dart';
+import 'package:barricade/Models/course.dart';
+import 'package:barricade/Models/course_class.dart';
+import 'package:barricade/Models/parsedTimetable.dart';
+import 'package:barricade/Utils/local_storage_handler.dart';
 import 'package:barricade/Values/colors.dart';
 import 'package:flutter/material.dart';
 class FreindCard extends StatefulWidget {
+  String email;
+  FreindCard({@required this.email});
   @override
   _FreindCardState createState() => _FreindCardState();
 }
 
 class _FreindCardState extends State<FreindCard> {
+  CourseClass courseClass;
+
+  @override
+  void initState() {
+    // TODO: implement initState
+    super.initState();
+    courseClass=ParsedTimetable.fromJson(json.decode(StorageHandler().getValue(widget.email))).getUpcomingClass();
+  }
+
   @override
   Widget build(BuildContext context) {
     return Card(
@@ -39,11 +57,11 @@ class _FreindCardState extends State<FreindCard> {
                         children: <Widget>[
                           Padding(
                             padding: const EdgeInsets.all(4.0),
-                            child: new Text("Hassan Berry",
+                            child: new Text(widget.email,
                                 overflow: TextOverflow.ellipsis,
                                 style: new TextStyle(color: Colors.white,fontSize: 16,fontWeight: FontWeight.w500)),
                           ),
-                          new Text("k16-4043",style: new TextStyle(color: Colors.white,fontSize: 12,fontWeight: FontWeight.w500)),
+                          new Text("",style: new TextStyle(color: Colors.white,fontSize: 12,fontWeight: FontWeight.w500)),
 
                         ],
                       ),
@@ -63,7 +81,7 @@ class _FreindCardState extends State<FreindCard> {
                       child: Column(
                         mainAxisAlignment: MainAxisAlignment.center,
                         children: <Widget>[
-                          new Text("E6",style: new TextStyle(color: Colors.white,fontSize: 28,fontWeight: FontWeight.w500),),
+                          new Text(courseClass.venue,style: new TextStyle(color: Colors.white,fontSize: 28,fontWeight: FontWeight.w500),),
                         ],
                       ),
                     )),
@@ -84,7 +102,7 @@ class _FreindCardState extends State<FreindCard> {
                       child: Column(
                         mainAxisAlignment: MainAxisAlignment.center,
                         children: <Widget>[
-                          new Text("ISPM Dr Nouman",
+                          new Text(courseClass.name,
                             overflow: TextOverflow.ellipsis,
                             style: new TextStyle(color: Colors.white,fontSize: 13),),
                         ],

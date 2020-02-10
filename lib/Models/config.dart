@@ -5,7 +5,7 @@ class Config {
   static StorageHandler storageHandler = new StorageHandler();
 
   static String completeTimetableKey = "completeTimetable";
-  static String freindsListKey = "completeTimetable";
+  static String friendsListKey = "friendsList";
 
 
 //  static String baseUrl = getValue("baseUrl", "http://timetablenotifier.com:3000");

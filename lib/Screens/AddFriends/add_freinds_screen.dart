@@ -1,6 +1,7 @@
 import 'dart:convert';
 
 import 'package:barricade/Models/config.dart';
+import 'package:barricade/Utils/connectionStatus.dart';
 import 'package:barricade/Utils/local_storage_handler.dart';
 import 'package:barricade/Utils/request_manager.dart';
 import 'package:barricade/Utils/validators.dart';
@@ -40,7 +41,7 @@ class _AddFriendsScreenState extends State<AddFriendsScreen> {
                   print("sflk");
                   if(key.currentState.validate()){
                     print("checking for net");
-                    if(await hasNet()){
+                    if(await checkConnectionStatus()){
                       print("net available");
                         setState(() {
                           temp=new CircularProgressIndicator();

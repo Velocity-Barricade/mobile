@@ -41,6 +41,7 @@ dependencies:
   firebase_auth: ^0.15.4
   image: ^2.1.4
   css_colors: ^1.0.0
+  connectivity: ^0.4.6+2
 
 dev_dependencies:
   flutter_test:

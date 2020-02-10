@@ -1,3 +1,4 @@
+import 'package:barricade/Utils/connectionStatus.dart';
 import 'package:barricade/Utils/request_manager.dart';
 import 'package:barricade/Utils/validators.dart';
 import 'package:flutter/material.dart';
@@ -26,7 +27,7 @@ class _ZDrawerItemsState extends State<DrawerComponent> {
         InkWell(
             onTap: () async {
               if(widget.checkFornet){
-                if(await hasNet()){
+                if(await checkConnectionStatus()){
 //                  todo add loader
 //                 var map = await RequestManager().getCourses();
                   Navigator.push(context,

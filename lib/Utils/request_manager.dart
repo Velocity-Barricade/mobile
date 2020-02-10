@@ -3,6 +3,7 @@ import 'dart:convert';
 
 import 'package:barricade/Models/config.dart';
 import 'package:barricade/Models/parsedTimetable.dart';
+import 'package:barricade/Utils/connectionStatus.dart';
 import 'package:barricade/Utils/local_storage_handler.dart';
 import "package:dio/dio.dart";
 import 'package:flutter/material.dart';
@@ -26,6 +27,8 @@ class RequestManager {
   }
 
   Future <bool>getClasses({@required String email}) async {
+    if (!(await checkConnectionStatus())) return false;
+
     String url =
         Config.baseUrl + Config.getUserClassesRoute.replaceAll(":email", email);
 

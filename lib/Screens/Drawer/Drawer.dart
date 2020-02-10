@@ -2,6 +2,7 @@ import 'dart:convert';
 
 import 'package:barricade/Models/parsedTimetable.dart';
 import 'package:barricade/Screens/AddFriends/add_freinds_screen.dart';
+import 'package:barricade/Utils/connectionStatus.dart';
 import 'package:barricade/Utils/local_storage_handler.dart';
 import 'package:barricade/Utils/request_manager.dart';
 import 'package:barricade/Utils/validators.dart';
@@ -42,7 +43,7 @@ class _DrawerScreenState extends State<DrawerScreen> {
 
           InkWell(
               onTap: () async {
-                if (await hasNet()) {
+                if (await checkConnectionStatus()) {
 //                  todo add loader
 //                 var map = await RequestManager().getCourses();
                   List<dynamic> list = await RequestManager().getCourses();

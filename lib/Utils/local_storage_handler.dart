@@ -11,6 +11,10 @@ class StorageHandler {
     return _singleton;
   }
 
+  initialize() async {
+    this.preferences = await SharedPreferences.getInstance();
+  }
+
   setValue(String key, String value) {
     this.preferences.setString(key, value);
   }
@@ -27,10 +31,6 @@ class StorageHandler {
 
   bool containsKey(String key) {
     return preferences.containsKey(key);
-  }
-
-  getInstance({SharedPreferences preferences}) {
-    this.preferences = preferences;
   }
 
   StorageHandler._internal() {}

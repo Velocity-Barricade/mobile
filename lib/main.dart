@@ -2,6 +2,7 @@ import 'package:barricade/Models/config.dart';
 import 'package:barricade/Screens/Login/LoginServices.dart';
 import 'package:barricade/Screens/Login/login_screen.dart';
 import 'package:barricade/Screens/Registration/register.dart';
+import 'package:barricade/Utils/connectionStatus.dart';
 import 'package:barricade/Utils/local_storage_handler.dart';
 import 'package:barricade/Utils/request_manager.dart';
 import 'package:firebase_auth/firebase_auth.dart';
@@ -42,56 +43,12 @@ class MyApp extends StatefulWidget {
 }
 
 class _MyAppState extends State<MyApp> {
-  AuthUser authFunc = new AuthUser();
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
       title: "Bank App Neomorphism",
       debugShowCheckedModeBanner: false,
-      home: Test(),
-
-    );
-  }
-}
-
-//FirebaseUser user = await signInWithGoogle();
-//print(user.email);
-//print((await user.getIdToken()).token);
-//print(user.uid);
-//String token = (await user.getIdToken()).token;
-//while (token.length > 0) {
-//int initLength = (token.length >= 500 ? 500 : token.length);
-//print(token.substring(0, initLength));
-//int endLength = token.length;
-//token = token.substring(initLength, endLength);
-//
-//}
-
-class Test extends StatefulWidget {
-  @override
-  _TestState createState() => _TestState();
-}
-
-class _TestState extends State<Test> {
-  @override
-  void initState() {
-    // TODO: implement initState
-    super.initState();
-
-  }
-
-  @override
-  Widget build(BuildContext context) {
-    return Center(
-      child: new RaisedButton(onPressed: () async {
-
-        await signInWithGoogle();
-        await RequestManager().getClasses(email: 'shakeebsiddiqui1998@gmail.com');
-        Navigator.push(
-          context,
-          MaterialPageRoute(builder: (context) => StartScreen()),
-        );
-      }),
+      home: StartScreen(),
     );
   }
 }

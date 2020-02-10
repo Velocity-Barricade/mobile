@@ -1,5 +1,6 @@
 import 'package:barricade/Models/course.dart';
 import 'package:barricade/Screens/HomeScreen/home_screen.dart';
+import 'package:barricade/Utils/connectionStatus.dart';
 import 'package:barricade/Utils/local_storage_handler.dart';
 import 'package:barricade/Utils/remote_config.dart';
 import 'package:barricade/Utils/request_manager.dart';
@@ -18,37 +19,35 @@ class StartScreen extends StatefulWidget {
 }
 
 class StartScreenState extends State<StartScreen> {
-
-  bool test=true;
+  bool isSignedIn = true;
   @override
   void initState() {
     // TODO: implement initState
     super.initState();
+//    StorageHandler
 
-      SharedPreferences.getInstance().then((prefs){
-          StorageHandler().getInstance(preferences: prefs);
-          fetchRemoteConfig().then((val){
-            print("done");
-            RequestManager().getClasses(email: 'shakeebsiddiqui1998@gmail.com');
+    FirebaseAuth.instance.onAuthStateChanged.first.then((user) {
+      if (user != null) {
+        print("not null");
+        print(user.email);
 
-//            test=false;
+        RequestManager().getClasses(email: user.email).then((isClassesFetchSuccessful) {
+          if (!isClassesFetchSuccessful) {
+            SharedPreferences.getInstance().then((prefs) {
+              StorageHandler().getInstance(preferences: prefs);
+              fetchRemoteConfig().then((val) {
 
-            FirebaseAuth.instance.onAuthStateChanged.first.then((user){
-                if(user!=null){
-                  print("not null");
-                  print(user.email);
-
-                }
-                else{
-                  print("null");
-                }
-
+              });
             });
+          }
+        });
 
-          });
-      });
 
-//      Config.
+      } else {
+        isSignedIn = false;
+        print("null");
+      }
+    });
   }
 
   @override
@@ -57,7 +56,7 @@ class StartScreenState extends State<StartScreen> {
     return Scaffold(
       body: SplashScreen.navigate(
         name: 'assets/splashScreen.flr',
-        next: (test)?HomeScreen():Container(),
+        next: (isSignedIn) ? HomeScreen() : Container(),
         until: () => Future.delayed(Duration(seconds: 3)),
         startAnimation: '1',
         backgroundColor: Colors.white,

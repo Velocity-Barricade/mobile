@@ -34,10 +34,13 @@ class StartScreenState extends State<StartScreen> {
         RequestManager().getClasses(email: user.email).then((isClassesFetchSuccessful) {
           if (!isClassesFetchSuccessful) {
             SharedPreferences.getInstance().then((prefs) {
-              StorageHandler().getInstance(preferences: prefs);
-              fetchRemoteConfig().then((val) {
+           StorageHandler().initialize().then((val){
+             fetchRemoteConfig().then((val) {
 
-              });
+             });
+           });
+//              StorageHandler().(preferences: prefs);
+
             });
           }
         });

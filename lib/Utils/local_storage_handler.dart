@@ -11,8 +11,9 @@ class StorageHandler {
     return _singleton;
   }
 
-  initialize() async {
+  Future <bool>initialize() async {
     this.preferences = await SharedPreferences.getInstance();
+    return true;
   }
 
   setValue(String key, String value) {

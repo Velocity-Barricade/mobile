@@ -1,4 +1,5 @@
 import 'package:barricade/Utils/local_storage_handler.dart';
+import 'package:firebase_auth/firebase_auth.dart';
 import 'package:firebase_remote_config/firebase_remote_config.dart';
 
 class Config {
@@ -16,6 +17,7 @@ class Config {
       getValue("getUserClassesRoute", "/user/getClasses/:email");
   static String getCompleteTimetableRoute =
       getValue("getCompleteTimetableRoute", "/user/getCompleteTimetable");
+  static FirebaseUser currentUser;
 
   static String getAllClassesRoute = getValue("getAllClassesRoute", "/course");
 

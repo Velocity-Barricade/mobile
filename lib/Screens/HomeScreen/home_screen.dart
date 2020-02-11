@@ -100,7 +100,7 @@ class _HomeScreenState extends State<HomeScreen> {
                                             ),
                                           )),
                                       ClassCard(
-                                        upcoming: true,
+                                        upcoming: false,
                                         time: "99",
                                         name: "dd",
                                         venue: "dd",

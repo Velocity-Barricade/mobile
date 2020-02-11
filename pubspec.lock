@@ -177,7 +177,7 @@ packages:
       name: flare_splash_screen
       url: "https://pub.dartlang.org"
     source: hosted
-    version: "2.1.4"
+    version: "3.0.0"
   flutter:
     dependency: "direct main"
     description: flutter

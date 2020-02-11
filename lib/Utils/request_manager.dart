@@ -1,4 +1,3 @@
-
 import 'dart:convert';
 
 import 'package:barricade/Models/config.dart';
@@ -14,19 +13,46 @@ class RequestManager {
   StorageHandler storageHandler;
 
   getCourses() async {
-
     String url = Config.baseUrl + Config.getAllClassesRoute;
     print(url);
     Response response = await dio.get(url);
     return response.data;
   }
+
   getCompleteTimetable() async {
     String url = Config.baseUrl + Config.getCompleteTimetableRoute;
     Response response = await dio.get(url);
-    storageHandler.setValue(Config.completeTimetableKey, json.encode(response.data));
+    storageHandler.setValue(
+        Config.completeTimetableKey, json.encode(response.data));
   }
 
-  Future <bool>getClasses({@required String email}) async {
+  updateCourselist(dynamic coureseList) async {
+    String url = Config.baseUrl + Config.updateCourseRoute;
+
+    try {
+      Response response = await dio.post(url,
+          data: {
+            'courses': coureseList,
+          },
+          options: Options(headers: {"Authorization": Config.currentUser.uid}));
+
+          try {
+            getClasses(email: Config.currentUser.email);
+          } on DioError catch (e) {
+            print("error");
+          }
+          StorageHandler().setValue(Config.courseListKey, json.encode(coureseList));
+
+          print("donr");
+      return true;
+    } on DioError catch (e) {
+      print('here');
+      print(e.response.headers);
+      return false;
+    }
+  }
+
+  Future<bool> getClasses({@required String email}) async {
     if (!(await checkConnectionStatus())) return false;
 
     String url =
@@ -35,13 +61,11 @@ class RequestManager {
     try {
       print(url);
       Response response = await dio.get(url);
-      if(response.statusCode==404){
+      if (response.statusCode == 404) {
         return false;
-      }
-      else{
+      } else {
 //        print(response.statusCode);
         storageHandler.setValue(email, json.encode(response.data));
-
       }
     } catch (e) {
       print(e);

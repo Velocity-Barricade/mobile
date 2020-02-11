@@ -30,8 +30,9 @@ class _FriendListState extends State<FriendList> {
     if(frends!= null && frends!='null'){
       list=(json.decode(frends));
     }
-
-    print(list);
+//
+//    print(list);
+//    print("--------");
     return Container(
 //      height: 200,
       child: ListView.builder(

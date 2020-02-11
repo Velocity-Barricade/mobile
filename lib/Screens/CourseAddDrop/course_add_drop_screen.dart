@@ -60,10 +60,14 @@ class _CourseAddDropState extends State<CourseAddDrop> {
 //          await signInWithGoogle();
 //          todo add loader screen
             //todo solve flicker on add drop
-          //  Shakeeb List of Selected Courses
-//          for (var i in ListSelected.selected) {
-//            print(i.name);
-//          }
+          //  Shakeeb List of Selected Courseswe
+
+          List<Map<String,String>>list=[];
+          for (var i in ListSelected.selected) {
+            list.add({"id":i.id.toString(),"name":i.name});
+            print("qwertyui");
+          }
+          RequestManager().updateCourselist(list);
         },
         child: Text("OK"),
       ),

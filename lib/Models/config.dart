@@ -7,6 +7,7 @@ class Config {
 
   static String completeTimetableKey = "completeTimetable";
   static String friendsListKey = "friendsList";
+  static String courseListKey = "courseList";
 
 
 //  static String baseUrl = getValue("baseUrl", "http://timetablenotifier.com:3000");

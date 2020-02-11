@@ -51,7 +51,7 @@ class _MyAppState extends State<MyApp> {
       title: "Bank App Neomorphism",
       debugShowCheckedModeBanner: false,
       home: Scaffold(
-        body: StartScreen()
+        body: StartScreen ()
       ),
     );
   }

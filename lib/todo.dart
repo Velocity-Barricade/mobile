@@ -9,3 +9,6 @@
 //todo when user has no classes
 //todo move all compute to isolates
 
+
+//todo usa,as work
+// todo by default add check in add drop

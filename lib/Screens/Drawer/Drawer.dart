@@ -9,7 +9,7 @@ import 'package:barricade/Utils/validators.dart';
 import 'package:flutter/material.dart';
 import 'package:barricade/Screens/FriendTimeTable/friend_timetable_screen.dart';
 import 'package:barricade/Screens/TimeTable/timetable_screen.dart';
-import 'package:barricade/Screens/CourseAddDrop/course_add_drop_screen.dart';
+import "package:barricade/Screens/CourseAddDrop/course_add_drop_screen.dart";
 import 'package:barricade/Screens/Drawer/Components/DrawerComponent.dart';
 import 'package:barricade/Models/course.dart';
 
@@ -47,8 +47,8 @@ class _DrawerScreenState extends State<DrawerScreen> {
 //                  todo add loader
 //                 var map = await RequestManager().getCourses();
                   List<dynamic> list = await RequestManager().getCourses();
-                  for (dynamic i in list){
-                    a.add(Course(id: i['id'],name: i['name']));
+                  for (dynamic i in list) {
+                    a.add(Course(id: i['id'], name: i['name']));
                   }
 
                   Widget course = CourseAddDrop(

@@ -4,25 +4,25 @@ import 'package:barricade/Models/parsedTimetable.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 
 class StorageHandler {
-  SharedPreferences preferences;
+  static SharedPreferences preferences;
   static final StorageHandler _singleton = new StorageHandler._internal();
 
   factory StorageHandler() {
     return _singleton;
   }
 
-  Future <bool>initialize() async {
-    this.preferences = await SharedPreferences.getInstance();
+  static initialize() async {
+    preferences = await SharedPreferences.getInstance();
     return true;
   }
 
   setValue(String key, String value) {
-    this.preferences.setString(key, value);
+    preferences.setString(key, value);
   }
 
   String getValue(String key) {
 //    todo: do keyerror handling here
-    return this.preferences.getString(key);
+    return preferences.getString(key);
   }
 
   ParsedTimetable getParsedTimetable(String email) {

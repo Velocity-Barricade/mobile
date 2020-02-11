@@ -19,38 +19,34 @@ class StartScreen extends StatefulWidget {
 }
 
 class StartScreenState extends State<StartScreen> {
+  String timetable;
   bool isSignedIn = true;
   @override
   void initState() {
     // TODO: implement initState
     super.initState();
-//    StorageHandler
 
-    FirebaseAuth.instance.onAuthStateChanged.first.then((user) {
-      if (user != null) {
-        print("not null");
-        print(user.email);
+    initializeApp().then((isInitialized) {
+      FirebaseAuth.instance.onAuthStateChanged.first.then((user) {
+        if (user != null) {
+          print("signed");
+          print(user.email);
 
-        RequestManager().getClasses(email: user.email).then((isClassesFetchSuccessful) {
-          if (!isClassesFetchSuccessful) {
-            SharedPreferences.getInstance().then((prefs) {
-           StorageHandler().initialize().then((val){
-             fetchRemoteConfig().then((val) {
-
-             });
-           });
-//              StorageHandler().(preferences: prefs);
-
-            });
-          }
-        });
-
-
-      } else {
-        isSignedIn = false;
-        print("null");
-      }
+          RequestManager().getClasses(email: user.email).then((isFetched) {
+            this.timetable = StorageHandler().getValue(user.email);
+          });
+        } else {
+          isSignedIn = false;
+          print("not signed");
+        }
+      });
     });
+  }
+
+  initializeApp() async {
+    await StorageHandler.initialize();
+    await fetchRemoteConfig();
+    return true;
   }
 
   @override

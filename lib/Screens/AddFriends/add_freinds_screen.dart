@@ -52,14 +52,14 @@ class _AddFriendsScreenState extends State<AddFriendsScreen> {
                             print('hlele');
                             setState(() {
                               temp = new Text("has been added");
-                              dynamic frenList=StorageHandler().getValue(Config.freindsListKey);
+                              dynamic frenList=StorageHandler().getValue(Config.friendsListKey);
                               print(frenList.runtimeType);
                               print(frenList);
                               if (frenList==null || frenList=='null'){
                                 print("first time ");
                                 frenList=["$val"];
                                 frenList=json.encode(frenList);
-                                StorageHandler().setValue(Config.freindsListKey, frenList);
+                                StorageHandler().setValue(Config.friendsListKey, frenList);
                                 print("end");
                               }
                               else{
@@ -70,8 +70,8 @@ class _AddFriendsScreenState extends State<AddFriendsScreen> {
                                 frenList.add(val);
                                 print(frenList);
                                 frenList=json.encode(frenList);
-                                StorageHandler().setValue(Config.freindsListKey, frenList);
-                                print(StorageHandler().getValue(Config.freindsListKey));
+                                StorageHandler().setValue(Config.friendsListKey, frenList);
+                                print(StorageHandler().getValue(Config.friendsListKey));
                               }
                             });
 

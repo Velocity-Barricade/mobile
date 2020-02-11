@@ -18,14 +18,14 @@ class _FriendListState extends State<FriendList> {
     // TODO: implement initState
     super.initState();
 //    print()
-    String frends=StorageHandler().getValue(Config.freindsListKey);
+    String frends=StorageHandler().getValue(Config.friendsListKey);
 
 //    list=[];
   }
 
   @override
   Widget build(BuildContext context) {
-    String frends=StorageHandler().getValue(Config.freindsListKey);
+    String frends=StorageHandler().getValue(Config.friendsListKey);
 
     if(frends!= null && frends!='null'){
       list=(json.decode(frends));

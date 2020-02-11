@@ -5,7 +5,7 @@ class Config {
   static StorageHandler storageHandler = new StorageHandler();
 
   static String completeTimetableKey = "completeTimetable";
-  static String freindsListKey = "completeTimetable";
+  static String friendsListKey = "friendsList";
 
 
 //  static String baseUrl = getValue("baseUrl", "http://timetablenotifier.com:3000");
@@ -22,8 +22,8 @@ class Config {
 //  Updated (other than default) are persisted to local sharedPreferences to
 //  use those as default next time app is opened
   static String getValue(String key, String defaultValue) {
-    if (storageHandler.preferences == null ||
-        !storageHandler.preferences.containsKey(key)) {
+    if (StorageHandler.preferences == null ||
+        !StorageHandler.preferences.containsKey(key)) {
       return defaultValue;
     }
 
@@ -31,15 +31,15 @@ class Config {
   }
 
   static persistConfigToSharedPreferences() {
-    storageHandler.preferences.setString("baseUrl", baseUrl);
-    storageHandler.preferences
+    StorageHandler.preferences.setString("baseUrl", baseUrl);
+    StorageHandler.preferences
         .setString("updateCourseRoute", updateCourseRoute);
-    storageHandler.preferences
+    StorageHandler.preferences
         .setString("getUserClassesRoute", getUserClassesRoute);
-    storageHandler.preferences
+    StorageHandler.preferences
         .setString("getCompleteTimetableRoute", getCompleteTimetableRoute);
 
-    storageHandler.preferences.setString("getAllClassesRoute", getAllClassesRoute);
+    StorageHandler.preferences.setString("getAllClassesRoute", getAllClassesRoute);
     storageHandler.setValue("baseUrl", baseUrl);
     storageHandler.setValue("updateCourseRoute", updateCourseRoute);
     storageHandler.setValue("getUserClassesRoute", getUserClassesRoute);

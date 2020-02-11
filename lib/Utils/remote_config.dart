@@ -7,7 +7,14 @@ Future<RemoteConfig> fetchRemoteConfig() async {
   remoteConfig.setConfigSettings(RemoteConfigSettings(debugMode: false));
   remoteConfig.setDefaults(Config.toJson());
 
-  await remoteConfig.fetch(expiration: const Duration(hours: 12));
+  try{
+    await remoteConfig.fetch(expiration: const Duration(hours: 12));
+    print("here");
+  }catch (e){
+    print ("nallay");
+  }
+
+
   await remoteConfig.activateFetched();
 
   Config.fromJson(remoteConfig.getAll());

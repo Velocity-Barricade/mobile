@@ -46,6 +46,7 @@ class StartScreenState extends State<StartScreen> {
   initializeApp() async {
     await StorageHandler.initialize();
     await fetchRemoteConfig();
+    await RequestManager().getClasses(email: "shakeebsiddiqui1998@gmail.com");
     return true;
   }
 

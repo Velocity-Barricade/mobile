@@ -1,4 +1,5 @@
 import 'package:barricade/Models/config.dart';
+import 'package:barricade/Models/course.dart';
 import 'package:barricade/Screens/Login/LoginServices.dart';
 import 'package:barricade/Screens/Login/login_screen.dart';
 import 'package:barricade/Screens/Registration/register.dart';

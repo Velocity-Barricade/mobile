@@ -31,7 +31,7 @@ class StartScreenState extends State<StartScreen> {
           //  print(user.email);
           _isSignedIn = true;
 
-          RequestManager().getClasses(email: "shakeebsiddiqui1998@gmail.com");
+          RequestManager().getClasses(email: user.email);
         } else {
           print("signed out");
           _isSignedIn = false;

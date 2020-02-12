@@ -34,8 +34,7 @@ class _DrawerScreenState extends State<DrawerScreen> {
             name: "TimeTableScreen",
             child: TimeTableScreen(
                 TimeTable: ParsedTimetable.fromJson(
-              json.decode(
-                  StorageHandler().getValue(Config.currentUser.email)),
+              json.decode(StorageHandler().getValue(Config.currentUser.email)),
             )),
             trail: Icon(Icons.people),
           ),
@@ -80,7 +79,8 @@ class _DrawerScreenState extends State<DrawerScreen> {
             onTap: () {
               StorageHandler.preferences.clear();
               signOutGoogle();
-              Navigator.of(context).pushReplacement(MaterialPageRoute(builder: (context) => StartScreen()));
+              Navigator.of(context).pushReplacement(
+                  MaterialPageRoute(builder: (context) => StartScreen()));
             },
           )
         ],

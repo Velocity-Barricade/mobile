@@ -9,31 +9,38 @@ class FreindTimeTable extends StatefulWidget {
   _FreindTimeTableState createState() => _FreindTimeTableState();
 }
 
-
 class _FreindTimeTableState extends State<FreindTimeTable> {
-
   @override
   void initState() {
     // TODO: implement initState
     super.initState();
   }
+
   @override
   Widget build(BuildContext context) {
-    int section1=17;
-    int section2=18;
-    int section3=65;
+    int section1 = 17;
+    int section2 = 18;
+    int section3 = 65;
     return Scaffold(
       backgroundColor: Colors.white,
-      appBar: new AppBar(elevation: 0,backgroundColor: Colors.white,),
+      appBar: new AppBar(
+        elevation: 0,
+        backgroundColor: Colors.white,
+        iconTheme: new IconThemeData(
+          color: themeGrey,
+          size: 3,
+        ),
+      ),
       body: Padding(
-        padding:  EdgeInsets.only(left: 20,right: 20),
+        padding: EdgeInsets.only(left: 20, right: 20),
         child: Column(
           children: <Widget>[
             Flexible(
               flex: section1,
               child: Column(
                 children: <Widget>[
-                  Expanded(child: Container(
+                  Expanded(
+                      child: Container(
 //                    color: Colors.green,
                     child: Row(
                       mainAxisAlignment: MainAxisAlignment.start,
@@ -42,9 +49,14 @@ class _FreindTimeTableState extends State<FreindTimeTable> {
                           crossAxisAlignment: CrossAxisAlignment.start,
                           mainAxisAlignment: MainAxisAlignment.center,
                           children: <Widget>[
-                            new Text("Shakeeb Siddiqui",
+                            new Text(
+                              "Shakeeb Siddiqui",
                               overflow: TextOverflow.ellipsis,
-                              style: TextStyle(fontSize: 38,color: themeColor,fontWeight: FontWeight.w400),),
+                              style: TextStyle(
+                                  fontSize: 38,
+                                  color: themeColor,
+                                  fontWeight: FontWeight.w400),
+                            ),
                           ],
                         ),
                       ],
@@ -53,36 +65,40 @@ class _FreindTimeTableState extends State<FreindTimeTable> {
                 ],
               ),
             ),
-
-
             Flexible(
               flex: section2,
               child: Column(
                 children: <Widget>[
-                  Expanded(child: Container(
+                  Expanded(
+                      child: Container(
 //                    color: Colors.red,
                     child: Row(
                       mainAxisAlignment: MainAxisAlignment.start,
-
                       children: <Widget>[
                         Column(
 //                          mainAxisSize: MainAxisSize.min,
-                        crossAxisAlignment: CrossAxisAlignment.start,
+                          crossAxisAlignment: CrossAxisAlignment.start,
                           mainAxisAlignment: MainAxisAlignment.spaceBetween,
 
                           children: <Widget>[
-                            new Text("Shakeebs Upcoming class",
-                              style: TextStyle(fontSize: 20,color: Colors.black,fontWeight: FontWeight.w400),),
-
+                            new Text(
+                              "Shakeebs Upcoming class",
+                              style: TextStyle(
+                                  fontSize: 20,
+                                  color: Colors.black,
+                                  fontWeight: FontWeight.w400),
+                            ),
                             Row(
                               mainAxisSize: MainAxisSize.min,
                               children: <Widget>[
                                 Container(
-                                    constraints: BoxConstraints(maxWidth: MediaQuery.of(context).size.width-40),
+                                    constraints: BoxConstraints(
+                                        maxWidth:
+                                            MediaQuery.of(context).size.width -
+                                                40),
                                     child: new ClassCard()),
                               ],
                             ),
-
                           ],
                         )
                       ],
@@ -91,18 +107,17 @@ class _FreindTimeTableState extends State<FreindTimeTable> {
                 ],
               ),
             ),
-
-
             Flexible(
               flex: section3,
               child: Column(
                 children: <Widget>[
-                  Expanded(child: Container(
+                  Expanded(
+                      child: Container(
 //                    color: Colors.amber,
                     child: Column(
                       children: <Widget>[
                         Flexible(
-                          flex: 17,
+                            flex: 17,
                             child: Container(
 //                              color: Colors.green,
                               child: Column(
@@ -111,7 +126,12 @@ class _FreindTimeTableState extends State<FreindTimeTable> {
                                     child: Center(
                                       child: Row(
                                         children: <Widget>[
-                                          new Text("Shakeeb's TimeTable",style: TextStyle(fontSize: 18,fontWeight: FontWeight.w400),),
+                                          new Text(
+                                            "Shakeeb's TimeTable",
+                                            style: TextStyle(
+                                                fontSize: 18,
+                                                fontWeight: FontWeight.w400),
+                                          ),
                                         ],
                                       ),
                                     ),
@@ -132,9 +152,7 @@ class _FreindTimeTableState extends State<FreindTimeTable> {
                 ],
               ),
             ),
-
           ],
-
         ),
       ),
     );

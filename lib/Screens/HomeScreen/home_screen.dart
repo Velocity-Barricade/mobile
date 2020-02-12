@@ -23,9 +23,7 @@ class _HomeScreenState extends State<HomeScreen> {
             padding: EdgeInsets.only(left: 8.0, right: 18),
             child: InkWell(
                 onTap: () {
-                  showSearch(context: context, delegate: Searchbar(
-
-                  ));
+                  showSearch(context: context, delegate: Searchbar());
                 },
                 child: new Icon(
                   Icons.search,

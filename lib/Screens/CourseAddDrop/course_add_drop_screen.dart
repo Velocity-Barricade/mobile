@@ -13,16 +13,12 @@ class ListSelected {
 
 class CourseAddDrop extends StatefulWidget {
   List<Course> sugesstion;
-  CourseAddDrop({Key key, @required this.sugesstion}) : super(key: key){
-
-  }
+  CourseAddDrop({Key key, @required this.sugesstion}) : super(key: key) {}
   @override
   _CourseAddDropState createState() => _CourseAddDropState(sugesstion);
 }
 
 class _CourseAddDropState extends State<CourseAddDrop> {
-
-
   int flexSearch = 20;
   int flexCourseList = 80;
   List<Course> sugesstion;
@@ -51,6 +47,7 @@ class _CourseAddDropState extends State<CourseAddDrop> {
     // TODO: implement initState
     super.initState();
   }
+
   @override
   Widget build(BuildContext context) {
     RequestManager().getCourses();
@@ -59,7 +56,7 @@ class _CourseAddDropState extends State<CourseAddDrop> {
         onPressed: () async {
 //          await signInWithGoogle();
 //          todo add loader screen
-            //todo solve flicker on add drop
+          //todo solve flicker on add drop
           //  Shakeeb List of Selected Courses
 //          for (var i in ListSelected.selected) {
 //            print(i.name);
@@ -78,45 +75,53 @@ class _CourseAddDropState extends State<CourseAddDrop> {
         attrs: SearchBarAttrs(),
 //      overlayStyle: SystemUiOverlayStyle(),
         defaultBar: AppBar(
+          iconTheme: new IconThemeData(
+            color: themeGrey,
+            size: 3,
+          ),
           elevation: 0,
           backgroundColor: Colors.white,
         ),
       ),
       body: Padding(
-        padding: const EdgeInsets.only(left:20.0,right: 20),
+        padding: const EdgeInsets.only(left: 20.0, right: 20),
         child: Container(
-          color: Colors.white,
+            color: Colors.white,
             child: Column(
               mainAxisSize: MainAxisSize.max,
               children: <Widget>[
                 Flexible(
                     flex: 15,
                     child: Column(
-
                       children: <Widget>[
-                        Expanded(child: Row(
+                        Expanded(
+                            child: Row(
                           children: <Widget>[
-                            Container(child: new Text("Available Courses",style: TextStyle(color: themeColor,fontSize: 32),)),
+                            Container(
+                                child: new Text(
+                              "Available Courses",
+                              style: TextStyle(color: themeColor, fontSize: 32),
+                            )),
                           ],
                         )),
                       ],
                     )),
                 Flexible(
-                  flex: 85,
-                  child: Column(
-                    children: <Widget>[
-                      Expanded(child: Container(child:                 ListView.builder(
-                          itemCount: sugesstion.length,
-                          itemBuilder: (context, index) {
-                            return CourseListCard(
-                              course: sugesstion[index],
-                            );
-                          }),)),
-                    ],
-                  )
-
-
-                ),
+                    flex: 85,
+                    child: Column(
+                      children: <Widget>[
+                        Expanded(
+                            child: Container(
+                          child: ListView.builder(
+                              itemCount: sugesstion.length,
+                              itemBuilder: (context, index) {
+                                return CourseListCard(
+                                  course: sugesstion[index],
+                                );
+                              }),
+                        )),
+                      ],
+                    )),
               ],
             )),
       ),

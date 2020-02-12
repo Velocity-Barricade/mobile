@@ -26,7 +26,7 @@ import 'Utils/signin_with_google.dart';
 
 //List<CameraDescription> cameraList;
 
-Future <void> main() async {
+Future<void> main() async {
 //  cameraList = await availableCameras();
 //  runApp(MyApp(cameralist: cameraList,));
 //    SharedPreferences preferences = await SharedPreferences.getInstance();
@@ -37,8 +37,7 @@ Future <void> main() async {
 
 class MyApp extends StatefulWidget {
   var cameralist;
-  MyApp({this.cameralist}){
-  }
+  MyApp({this.cameralist}) {}
 
   @override
   _MyAppState createState() => _MyAppState();
@@ -50,12 +49,11 @@ class _MyAppState extends State<MyApp> {
     return MaterialApp(
       title: "Bank App Neomorphism",
       debugShowCheckedModeBanner: false,
-      home: Scaffold(
-        body: StartScreen()
-      ),
+      home: Scaffold(body: StartScreen()),
     );
   }
 }
+
 class Test extends StatefulWidget {
   @override
   _TestState createState() => _TestState();
@@ -68,8 +66,10 @@ class _TestState extends State<Test> {
       child: new RaisedButton(onPressed: () async {
         var cList;
 //        = await availableCameras();
-        Navigator.of(context)
-            .push(new MaterialPageRoute(builder: (context)=>QRTest(cameras: cList,)));
+        Navigator.of(context).push(new MaterialPageRoute(
+            builder: (context) => QRTest(
+                  cameras: cList,
+                )));
       }),
     );
   }

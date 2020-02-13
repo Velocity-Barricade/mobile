@@ -9,7 +9,6 @@ class Config {
   static String friendsListKey = "friendsList";
   static String courseListKey = "courseList";
 
-
 //  static String baseUrl = getValue("baseUrl", "http://timetablenotifier.com:3000");
   static String baseUrl = getValue("baseUrl", "http://52.200.188.3:3000");
   static String updateCourseRoute =
@@ -42,11 +41,13 @@ class Config {
     StorageHandler.preferences
         .setString("getCompleteTimetableRoute", getCompleteTimetableRoute);
 
-    StorageHandler.preferences.setString("getAllClassesRoute", getAllClassesRoute);
+    StorageHandler.preferences
+        .setString("getAllClassesRoute", getAllClassesRoute);
     storageHandler.setValue("baseUrl", baseUrl);
     storageHandler.setValue("updateCourseRoute", updateCourseRoute);
     storageHandler.setValue("getUserClassesRoute", getUserClassesRoute);
-    storageHandler.setValue("getCompleteTimetableRoute", getCompleteTimetableRoute);
+    storageHandler.setValue(
+        "getCompleteTimetableRoute", getCompleteTimetableRoute);
     storageHandler.setValue("getAllClassesRoute", getAllClassesRoute);
   }
 

@@ -16,6 +16,7 @@ import 'package:barricade/Screens/TimeTable/timetable_screen.dart';
 import "package:barricade/Screens/CourseAddDrop/course_add_drop_screen.dart";
 import 'package:barricade/Screens/Drawer/Components/DrawerComponent.dart';
 import 'package:barricade/Models/course.dart';
+import 'package:barricade/Screens/FriendsList/friend_list.dart';
 
 class DrawerScreen extends StatefulWidget {
   @override
@@ -34,7 +35,8 @@ class _DrawerScreenState extends State<DrawerScreen> {
             name: "TimeTableScreen",
             child: TimeTableScreen(
                 TimeTable: ParsedTimetable.fromJson(
-              json.decode(StorageHandler().getValue(Config.currentUser.email)),
+              json.decode(
+                  StorageHandler().getValue("shakeebsiddiqui1998@gmail.com")),
             )),
             trail: Icon(Icons.people),
           ),
@@ -72,6 +74,14 @@ class _DrawerScreenState extends State<DrawerScreen> {
             name: "Add friends",
             child: AddFriendsScreen(),
             trail: Icon(Icons.people),
+          ),
+          InkWell(
+            onTap: () async {
+              if (await checkConnectionStatus()) {}
+            },
+            child: ListTile(
+              title: new Text("Friends List"),
+            ),
           ),
           ListTile(
             title: Text("Log Out"),

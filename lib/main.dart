@@ -17,6 +17,7 @@ import 'Screens/AddFriends/add_freinds_screen.dart';
 import 'Screens/CompleteTimeTable/CompleteTimeTableScreen.dart';
 import 'Screens/CourseAddDrop/course_add_drop_screen.dart';
 import 'Screens/FriendTimeTable/friend_timetable_screen.dart';
+import 'Screens/FriendsList/friend_list.dart';
 import 'Screens/HomeScreen/home_screen.dart';
 import 'package:google_sign_in/google_sign_in.dart';
 

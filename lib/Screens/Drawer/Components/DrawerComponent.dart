@@ -9,7 +9,10 @@ class DrawerComponent extends StatefulWidget {
   Widget trail;
   bool checkFornet;
   DrawerComponent(
-      {@required this.name, @required this.child, @required this.trail,this.checkFornet=false});
+      {@required this.name,
+      @required this.child,
+      @required this.trail,
+      this.checkFornet = false});
 
   @override
   State createState() => _ZDrawerItemsState();
@@ -26,18 +29,17 @@ class _ZDrawerItemsState extends State<DrawerComponent> {
       children: <Widget>[
         InkWell(
             onTap: () async {
-              if(widget.checkFornet){
-                if(await checkConnectionStatus()){
-//                  todo add loader
-//                 var map = await RequestManager().getCourses();
-                  Navigator.push(context,
-                      new MaterialPageRoute(builder: (context) => widget.child));
+              if (widget.checkFornet) {
+                if (await checkConnectionStatus()) {
+                  Navigator.push(
+                      context,
+                      new MaterialPageRoute(
+                          builder: (context) => widget.child));
+                } else {
+                  Scaffold.of(context)
+                      .showSnackBar(SnackBar(content: Text("Needs Internet")));
                 }
-                else{
-                  Scaffold.of(context).showSnackBar(SnackBar(content: Text("Needs Internet")));
-                }
-              }
-              else{
+              } else {
                 Navigator.push(context,
                     new MaterialPageRoute(builder: (context) => widget.child));
               }

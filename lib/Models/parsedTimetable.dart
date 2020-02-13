@@ -1,3 +1,5 @@
+import 'dart:convert';
+
 import 'package:barricade/Models/course_class.dart';
 
 class ParsedTimetable {
@@ -7,10 +9,11 @@ class ParsedTimetable {
     this.timetable = parsedTimetable;
   }
 
-  factory ParsedTimetable.fromJson(Map<String, dynamic> json) {
-    Map<String, List<CourseClass>> parsedMap = new Map();
+  factory ParsedTimetable.fromJson(Map<String, dynamic> ttJson) {
+    Map<String, List<CourseClass>> parsedMap = {};
+    [0, 1, 2, 3, 4, 5, 6].forEach((v) => parsedMap[v.toString()] = []);
 
-    json.forEach((k, v) {
+    ttJson.forEach((k, v) {
       parsedMap[k] = v.map((title) => CourseClass.fromJson(title)).toList().cast<CourseClass>();
     });
 

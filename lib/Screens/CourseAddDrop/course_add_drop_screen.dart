@@ -64,7 +64,7 @@ class _CourseAddDropState extends State<CourseAddDrop> {
             list.add({"id": i.id.toString(), "name": i.name});
             print("qwertyui");
           }
-          RequestManager().updateCourselist(list);
+          RequestManager().updateCoursesList(list);
         },
         child: Text("OK"),
       ),

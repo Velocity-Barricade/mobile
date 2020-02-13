@@ -1,7 +1,6 @@
 import 'dart:convert';
 
 import 'package:barricade/Models/config.dart';
-import 'package:barricade/Models/parsedTimetable.dart';
 import 'package:barricade/Utils/connectionStatus.dart';
 import 'package:barricade/Utils/local_storage_handler.dart';
 import "package:dio/dio.dart";
@@ -26,7 +25,7 @@ class RequestManager {
         Config.completeTimetableKey, json.encode(response.data));
   }
 
-  updateCourselist(dynamic coureseList) async {
+  updateCoursesList(dynamic coureseList) async {
     String url = Config.baseUrl + Config.updateCourseRoute;
 
     try {
@@ -36,14 +35,14 @@ class RequestManager {
           },
           options: Options(headers: {"Authorization": Config.currentUser.uid}));
 
-          try {
-            getClasses(email: Config.currentUser.email);
-          } on DioError catch (e) {
-            print("error");
-          }
-          StorageHandler().setValue(Config.courseListKey, json.encode(coureseList));
+      try {
+        getClasses(email: Config.currentUser.email);
+      } on DioError catch (e) {
+        print("error");
+      }
+      StorageHandler().setValue(Config.courseListKey, json.encode(coureseList));
 
-          print("donr");
+      print("donr");
       return true;
     } on DioError catch (e) {
       print('here');
@@ -59,26 +58,19 @@ class RequestManager {
         Config.baseUrl + Config.getUserClassesRoute.replaceAll(":email", email);
 
     try {
-      print(url);
       Response response = await dio.get(url);
-      if (response.statusCode == 404) {
-        return false;
-      } else {
-//        print(response.statusCode);
-        storageHandler.setValue(email, json.encode(response.data));
-      }
-    } catch (e) {
+      storageHandler.setValue(email, json.encode(response.data));
+    } on DioError catch (e) {
       print(e);
+
+      if (e.response.statusCode == 404) {
+        storageHandler.setValue(email, json.encode({}));
+        return false;
+      }
       return false;
     }
     return true;
   }
-
-  updateCourses(@required var courseList) {}
-
-  addCourses({@required var cousreList}) {}
-
-  addExtraClass({@required var extraClass}) {}
 
   factory RequestManager() {
     return _singleton;

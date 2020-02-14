@@ -1,18 +1,25 @@
+import 'package:barricade/Models/parsedTimetable.dart';
+import 'package:barricade/Screens/HomeScreen/Components/friend_list.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:barricade/Values/colors.dart';
 
-class FriendList extends StatefulWidget {
-  var friendList;
+class FriendsList extends StatefulWidget {
+  List<ParsedTimetable> listoftimeTable;
+  FriendsList({@required this.listoftimeTable});
   @override
-  _FriendListState createState() => _FriendListState();
+  _FriendsListState createState() => _FriendsListState();
 }
 
-class _FriendListState extends State<FriendList> {
+class _FriendsListState extends State<FriendsList> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
+        iconTheme: new IconThemeData(
+          color: themeGrey,
+          size: 3,
+        ),
         backgroundColor: Colors.white,
         elevation: 0,
       ),

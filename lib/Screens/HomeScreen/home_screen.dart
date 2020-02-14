@@ -1,9 +1,18 @@
+import 'dart:convert';
+
+import 'package:barricade/Models/config.dart';
+import 'package:barricade/Models/parsedTimetable.dart';
 import 'package:barricade/Screens/TimeTable/Components/class_card.dart';
+import 'package:barricade/Screens/TimeTable/timetable_screen.dart';
+import 'package:barricade/Utils/local_storage_handler.dart';
 import 'package:barricade/Values/colors.dart';
 import 'package:flutter/material.dart';
 import 'package:barricade/Screens/CourseAddDrop/Components/search_bar.dart';
-import 'Components/friend_list.dart';
+
 import 'package:barricade/Screens/Drawer/Drawer.dart';
+import 'package:barricade/Screens/FriendsList/friend_list.dart';
+
+import 'Components/friend_list.dart';
 
 class HomeScreen extends StatefulWidget {
   @override
@@ -189,11 +198,40 @@ class _HomeScreenState extends State<HomeScreen> {
                                                   const EdgeInsets.all(8.0),
                                               child: Row(
                                                 children: <Widget>[
-                                                  new Text(
-                                                    "View the complete list",
-                                                    style: TextStyle(
-                                                        fontSize: 15,
-                                                        color: themeGrey),
+                                                  Builder(
+                                                    builder: (context) =>
+                                                        InkWell(
+                                                      onTap: () {
+                                                        print(StorageHandler()
+                                                                .getValue(Config
+                                                                    .friendsListKey) ==
+                                                            null);
+                                                        if (StorageHandler()
+                                                                .getValue(Config
+                                                                    .friendsListKey) ==
+                                                            null) {
+                                                          Scaffold.of(context)
+                                                              .showSnackBar(SnackBar(
+                                                                  content: Text(
+                                                                      "No Friends ")));
+                                                        } else {
+                                                          Navigator.of(context)
+                                                              .pushReplacement(
+                                                                  MaterialPageRoute(
+                                                                      builder: (context) =>
+                                                                          FriendsList(
+                                                                            listoftimeTable:
+                                                                                json.decode(StorageHandler().getValue(Config.friendsListKey)),
+                                                                          )));
+                                                        }
+                                                      },
+                                                      child: new Text(
+                                                        "View the complete list",
+                                                        style: TextStyle(
+                                                            fontSize: 15,
+                                                            color: themeGrey),
+                                                      ),
+                                                    ),
                                                   ),
                                                   new Icon(
                                                     Icons.arrow_forward,

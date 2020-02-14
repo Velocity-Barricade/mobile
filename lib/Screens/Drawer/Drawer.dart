@@ -75,14 +75,6 @@ class _DrawerScreenState extends State<DrawerScreen> {
             child: AddFriendsScreen(),
             trail: Icon(Icons.people),
           ),
-          InkWell(
-            onTap: () async {
-              if (await checkConnectionStatus()) {}
-            },
-            child: ListTile(
-              title: new Text("Friends List"),
-            ),
-          ),
           ListTile(
             title: Text("Log Out"),
             leading: Icon(Icons.exit_to_app),

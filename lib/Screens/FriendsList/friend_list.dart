@@ -5,8 +5,8 @@ import 'package:flutter/material.dart';
 import 'package:barricade/Values/colors.dart';
 
 class FriendsList extends StatefulWidget {
-  List<ParsedTimetable> listoftimeTable;
-  FriendsList({@required this.listoftimeTable});
+  List listOfFriends;
+  FriendsList({@required this.listOfFriends});
   @override
   _FriendsListState createState() => _FriendsListState();
 }
@@ -46,9 +46,15 @@ class _FriendsListState extends State<FriendsList> {
             ),
             Flexible(
                 flex: 90,
-                child: ListView(
-                  children: <Widget>[FriendListCard()],
-                ))
+                child: widget.listOfFriends == null
+                    ? Container()
+                    : ListView.builder(
+                        itemCount: widget.listOfFriends.length,
+                        itemBuilder: (BuildContext context, int index) {
+                          return FriendListCard(
+                            friend: widget.listOfFriends[index],
+                          );
+                        }))
           ],
         )),
       ),
@@ -57,6 +63,8 @@ class _FriendsListState extends State<FriendsList> {
 }
 
 class FriendListCard extends StatefulWidget {
+  var friend;
+  FriendListCard({@required this.friend});
   @override
   _FriendListCardState createState() => _FriendListCardState();
 }
@@ -73,15 +81,9 @@ class _FriendListCardState extends State<FriendListCard> {
           children: <Widget>[
             Container(
                 child: Text(
-              "Name",
+              "Id",
               style: TextStyle(color: Colors.black, fontSize: 22),
             )),
-            Container(
-              child: Text(
-                "Friends",
-                style: TextStyle(color: Colors.grey, fontSize: 14),
-              ),
-            )
           ],
         ),
         trailing: Icon(Icons.arrow_forward),

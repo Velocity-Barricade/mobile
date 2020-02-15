@@ -215,12 +215,16 @@ class _HomeScreenState extends State<HomeScreen> {
                                                                   content: Text(
                                                                       "No Friends ")));
                                                         } else {
-                                                          Navigator.of(context)
-                                                              .pushReplacement(
-                                                                  MaterialPageRoute(
-                                                                      builder: (context) =>
+                                                          print(json.decode(
+                                                              StorageHandler()
+                                                                  .getValue(Config
+                                                                      .friendsListKey)));
+                                                          Navigator.of(context).push(
+                                                              MaterialPageRoute(
+                                                                  builder:
+                                                                      (context) =>
                                                                           FriendsList(
-                                                                            listoftimeTable:
+                                                                            listOfFriends:
                                                                                 json.decode(StorageHandler().getValue(Config.friendsListKey)),
                                                                           )));
                                                         }
